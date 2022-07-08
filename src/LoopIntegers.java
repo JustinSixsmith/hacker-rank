@@ -9,15 +9,12 @@ public class LoopIntegers {
             int b = in.nextInt();
             int n = in.nextInt();
 
-            int sum = a;
-            for (int j = 0; j < n; j++) {
-                int nextElement = (int)Math.pow(2, j * b);
-                sum = sum + nextElement;
-                System.out.printf("%s ", sum);
+            int sum = a ;
+            for(int j=0;j<n;j++){
+                sum += Math.pow(2, j) * b;
+                System.out.printf("%s ",sum);
             }
-            if (i < t - 1) {
-                System.out.println("\n");
-            }
+            System.out.println();
         }
         in.close();
     }
