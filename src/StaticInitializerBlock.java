@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class JavaStaticInitializerBlock {
+public class StaticInitializerBlock {
     static Scanner scanner = new Scanner(System.in);
     static int B = scanner.nextInt();
     static int H = scanner.nextInt();

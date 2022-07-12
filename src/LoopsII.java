@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class JavaLoopsII {
+public class LoopsII {
     public static void main(String []argh){
         Scanner in = new Scanner(System.in);
         int t=in.nextInt();
