@@ -1,3 +1,5 @@
+package introduction;
+
 import java.io.*;
 import java.time.LocalDate;
 
@@ -32,7 +34,7 @@ public class DateAndTime {
 //
 //        int year = Integer.parseInt(firstMultipleInput[2]);
 //
-//        String res = Result.findDay(month, day, year);
+//        String res = introduction.Result.findDay(month, day, year);
 //
 //        bufferedWriter.write(res);
 //        bufferedWriter.newLine();

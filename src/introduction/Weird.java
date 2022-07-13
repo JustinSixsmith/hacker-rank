@@ -1,3 +1,5 @@
+package introduction;
+
 import java.util.Scanner;
 import java.io.*;
         import java.math.*;
@@ -17,9 +19,9 @@ public class Weird {
         scanner.close();
 
         if(((N % 2 == 0) && (N >= 2 && N <= 5)) || ((N % 2 == 0) && (N > 20))) {
-            System.out.println("Not Weird");
+            System.out.println("Not introduction.Weird");
         } else {
-            System.out.println("Weird");
+            System.out.println("introduction.Weird");
         }
 
     }
