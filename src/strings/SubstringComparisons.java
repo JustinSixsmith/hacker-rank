@@ -7,20 +7,22 @@ import java.util.TreeSet;
 public class SubstringComparisons {
 
     public static String getSmallestAndLargest(String s, int k) {
-        String smallest = "";
-        String largest = "";
-        SortedSet<String> sets = new TreeSet<>();
+        String smallest = s.substring(0, k);
+        String largest = s.substring(0, k);
 
         // Complete the function
         // 'smallest' must be the lexicographically smallest substring of length 'k'
         // 'largest' must be the lexicographically largest substring of length 'k'
 
         for (int i = 0; i < s.length()-k; i++) {
-            sets.add(s.substring(i, i + k));
+            String sTemp = s.substring(i, i + k);
+            if(sTemp.compareTo(smallest) < 0) {
+                smallest = sTemp;
+            }
+            if(sTemp.compareTo(largest) > 0) {
+                largest = sTemp;
+            }
         }
-
-        smallest = sets.first();
-        largest = sets.last();
 
         return smallest + "\n" + largest;
     }
