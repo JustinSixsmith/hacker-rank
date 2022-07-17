@@ -14,7 +14,7 @@ public class SubstringComparisons {
         // 'smallest' must be the lexicographically smallest substring of length 'k'
         // 'largest' must be the lexicographically largest substring of length 'k'
 
-        for (int i = 0; i < s.length()-k; i++) {
+        for (int i = 0; i <= s.length()-k; i++) {
             String sTemp = s.substring(i, i + k);
             if(sTemp.compareTo(smallest) < 0) {
                 smallest = sTemp;
