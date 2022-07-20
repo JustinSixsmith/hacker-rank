@@ -1,5 +1,7 @@
 package strings;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -7,15 +9,20 @@ public class Anagrams {
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner scan = new Scanner(System.in);
-        String a = scan.nextLine().toLowerCase();
-        String b = scan.nextLine().toLowerCase();
+        char[] a = scan.nextLine().toLowerCase().toCharArray();
+        char[] b = scan.nextLine().toLowerCase().toCharArray();
 
-        for (int i = 0; i < a.length(); i++) {
-
-
+        if (a.length != b.length) {
+            System.out.println("Not Anagrams");
+        } else {
+            java.util.Arrays.sort(a);
+            java.util.Arrays.sort(b);
+            if (java.util.Arrays.equals(a, b)) {
+                System.out.println("Anagrams");
+            } else {
+                System.out.println("Not Anagrams");
+            }
         }
-
-
 
     }
 }
