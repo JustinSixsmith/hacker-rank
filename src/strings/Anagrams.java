@@ -1,8 +1,5 @@
 package strings;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Anagrams {
@@ -23,6 +20,5 @@ public class Anagrams {
                 System.out.println("Not Anagrams");
             }
         }
-
     }
 }
