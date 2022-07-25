@@ -2,17 +2,27 @@ package strings;
 
 import java.util.Scanner;
 
+class UsernameValidator {
+    /*
+     * Write regular expression here.
+     */
+    public static final String regularExpression = "(^[a-zA-Z][0-9_|a-zA-Z]{7,29})";
+}
+
 public class ValidUsername {
+    private static final Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
-        String regex = "(^[a-zA-Z][0-9_|a-zA-Z]{7,29})";
+        int n = Integer.parseInt(scan.nextLine());
+        while (n-- != 0) {
+            String userName = scan.nextLine();
 
-        Scanner scanner = new Scanner(System.in);
-        int numNames = Integer.parseInt(scanner.nextLine());
-
-        while (numNames-- > 0) {
-            String input = scanner.nextLine();
+            if (userName.matches(UsernameValidator.regularExpression)) {
+                System.out.println("Valid");
+            } else {
+                System.out.println("Invalid");
+            }
         }
-
-
     }
 }
+
