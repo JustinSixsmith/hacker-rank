@@ -13,7 +13,25 @@ class Result {
 
     public static void plusMinus(List<Integer> arr) {
         // Write your code here
+        int pos = 0;
+        int neg = 0;
+        int zero = 0;
 
+
+        for (Integer num : arr) {
+            if (num > 0) {
+                pos++;
+            }
+            if (num < 0) {
+                neg++;
+            }
+            if (num == 0) {
+                zero++;
+            }
+        }
+        System.out.println(pos);
+        System.out.println(neg);
+        System.out.println(zero);
     }
 
 }
