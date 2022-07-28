@@ -17,7 +17,6 @@ class Result {
         double neg = 0;
         double zero = 0;
 
-
         for (Integer num : arr) {
             if (num > 0) {
                 pos++;
