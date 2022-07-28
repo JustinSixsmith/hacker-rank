@@ -13,9 +13,9 @@ class Result {
 
     public static void plusMinus(List<Integer> arr) {
         // Write your code here
-        int pos = 0;
-        int neg = 0;
-        int zero = 0;
+        double pos = 0;
+        double neg = 0;
+        double zero = 0;
 
 
         for (Integer num : arr) {
@@ -29,9 +29,11 @@ class Result {
                 zero++;
             }
         }
-        System.out.println(pos);
-        System.out.println(neg);
-        System.out.println(zero);
+        double posRatio = pos / arr.size();
+        double negRatio = neg / arr.size();
+        double zeroRatio = zero / arr.size();
+
+        System.out.format("%.6f%n%.6f%n%.6f%n", posRatio, negRatio, zeroRatio);
     }
 
 }
