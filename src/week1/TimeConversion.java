@@ -1,8 +1,12 @@
 package week1;
 
 import java.io.*;
-
-import static java.lang.Integer.parseInt;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
 
 class TimeResult {
 
@@ -30,8 +34,8 @@ class TimeResult {
         }
         return hours + ":" + minutes + ":" + seconds;
     }
-}
 
+}
 
 public class TimeConversion {
     public static void main(String[] args) throws IOException {

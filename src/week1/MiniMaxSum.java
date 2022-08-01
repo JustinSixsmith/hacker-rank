@@ -1,3 +1,5 @@
+package week1;
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -9,7 +11,7 @@ import java.util.regex.*;
 import static java.util.Collections.sort;
 import static java.util.Collections.swap;
 
-class Result {
+class MinMaxResult {
 
     /*
      * Complete the 'miniMaxSum' function below.
@@ -45,7 +47,7 @@ public class MiniMaxSum {
             arr.add(arrItem);
         }
 
-        Result.miniMaxSum(arr);
+        MinMaxResult.miniMaxSum(arr);
 
         bufferedReader.close();
     }
