@@ -22,9 +22,9 @@ class SparseResult {
     public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
         // Write your code here
         ArrayList<Integer> results = new ArrayList<>();
-        // How many times the loops runs
+        // Loop through the queries
         for (String query : queries) {
-            // Create counter for times found
+            // Create counter for times element is found
             int times = 0;
             // Iterate over the strings array
             for (String string : strings) {
@@ -32,8 +32,8 @@ class SparseResult {
                 if (query.equals(string)) {
                     times++;
                 }
-                results.add(times);
             }
+            results.add(times);
         }
         return results;
     }
