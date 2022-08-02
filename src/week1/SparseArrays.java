@@ -28,8 +28,9 @@ class SparseResult {
             int times = 0;
             // Iterate over the strings array
             for (String string : strings) {
-                // Check if each element in the queries matches with any of the elements in the strings
+                // Check if any element in the queries matches with the string
                 if (query.equals(string)) {
+                    // Increment counter if it does
                     times++;
                 }
             }
