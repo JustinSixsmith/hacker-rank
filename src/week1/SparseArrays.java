@@ -34,6 +34,7 @@ class SparseResult {
                     times++;
                 }
             }
+            // Add counter to the results array
             results.add(times);
         }
         return results;
