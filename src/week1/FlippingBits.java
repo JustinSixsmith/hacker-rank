@@ -8,6 +8,8 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
+import static java.lang.Long.parseLong;
+
 class FlipResult {
 
     /*
@@ -19,7 +21,10 @@ class FlipResult {
 
     public static long flippingBits(long n) {
         // Write your code here
-
+        String tempBinary = Long.toBinaryString(n);
+        String binary = tempBinary.replaceAll("1", "0").replaceAll("0", "1");
+        long flippedBinary = parseLong(binary);
+        return Long.parseLong(String.valueOf(flippedBinary));
     }
 
 }
@@ -32,7 +37,7 @@ public class FlippingBits {
         int q = Integer.parseInt(bufferedReader.readLine().trim());
 
         for (int qItr = 0; qItr < q; qItr++) {
-            long n = Long.parseLong(bufferedReader.readLine().trim());
+            long n = parseLong(bufferedReader.readLine().trim());
 
             long result = FlipResult.flippingBits(n);
 
