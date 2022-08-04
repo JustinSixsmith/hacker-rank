@@ -39,25 +39,22 @@ class FlipResult {
 
 public class FlippingBits {
     public static void main(String[] args) throws IOException {
-        System.out.println(FlipResult.flippingBits(2147483647));
-        System.out.println(FlipResult.flippingBits(1));
-        System.out.println(FlipResult.flippingBits(0));
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-//
-//        int q = Integer.parseInt(bufferedReader.readLine().trim());
-//
-//        for (int qItr = 0; qItr < q; qItr++) {
-//            long n = parseLong(bufferedReader.readLine().trim());
-//
-//            long result = FlipResult.flippingBits(n);
-//
-//            bufferedWriter.write(String.valueOf(result));
-//            bufferedWriter.newLine();
-//        }
-//
-//        bufferedReader.close();
-//        bufferedWriter.close();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int q = Integer.parseInt(bufferedReader.readLine().trim());
+
+        for (int qItr = 0; qItr < q; qItr++) {
+            long n = parseLong(bufferedReader.readLine().trim());
+
+            long result = FlipResult.flippingBits(n);
+
+            bufferedWriter.write(String.valueOf(result));
+            bufferedWriter.newLine();
+        }
+
+        bufferedReader.close();
+        bufferedWriter.close();
 
     }
 }
