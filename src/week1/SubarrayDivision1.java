@@ -26,24 +26,22 @@ class SubarrayResult {
 
     public static int birthday(List<Integer> s, int d, int m) {
         // Write your code here
-        // add up days
-        int tempM = m;
-        int counter = 0;
-        // start with last index in array and work backwards
-        for (int i = s.size() - 1; i >= 0; i--) {
-            int days = 0;
-            while (tempM > 0) {
-                // add
-                days += s.get(i - 1);
-                tempM--;
-            }
-            if (days == d) {
-                counter++;
+        int startingIndex = 0;
+        int count = 0;
+        int sum = 0;
+
+        for (int i = 0; i < s.size(); i++) {
+            sum += s.get(i);
+            if (i - startingIndex + 1 == m) {
+                if (sum == d) {
+                    count++;
+                }
+                sum -= s.get(startingIndex);
+                startingIndex++;
             }
         }
-        return counter;
+        return count;
     }
-
 }
 
 public class SubarrayDivision1 {
