@@ -26,7 +26,22 @@ class SubarrayResult {
 
     public static int birthday(List<Integer> s, int d, int m) {
         // Write your code here
-
+        // add up days
+        int tempM = m;
+        int counter = 0;
+        // start with last index in array and work backwards
+        for (int i = s.size() - 1; i >= 0; i--) {
+            int days = 0;
+            while (tempM > 0) {
+                // add
+                days += s.get(i - 1);
+                tempM--;
+            }
+            if (days == d) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
 }
