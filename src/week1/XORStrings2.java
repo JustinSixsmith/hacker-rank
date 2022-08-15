@@ -9,12 +9,9 @@ import java.util.regex.*;
 public class Solution {
 
     public static String stringsXOR(String s, String t) {
-        HashSet<Character> sChars = new HashSet<>();
-        HashSet<Character> tChars = new HashSet<>();
-
         StringBuilder res = new StringBuilder(new String(""));
-        for(int i = 0; i < s.length(); i++) {
-            if(s.charAt(i) == t.charAt(i))
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == t.charAt(i))
                 res.append("0");
             else
                 res.append("1");
