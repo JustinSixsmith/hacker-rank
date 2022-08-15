@@ -9,18 +9,23 @@ import java.util.regex.*;
 public class Solution {
 
     public static String stringsXOR(String s, String t) {
-        HashSet<Character> string1 = new HashSet<>();
+        HashSet<Character> sChars = new HashSet<>();
+        HashSet<Character> tChars = new HashSet<>();
 
         for (int i = 0; i < s.length(); i++) {
-            string1.add(s.charAt(i));
+            sChars.add(s.charAt(i));
         }
 
         for (int i = 0; i < t.length(); i++) {
-            if (string1.contains(t.charAt(i))) {
-                return "YES";
-            }
-                return "NO";
+            sChars.add(t.charAt(i));
         }
+
+        sChars.retainAll(tChars);
+
+        if (sChars.isEmpty()) {
+            return "YES";
+        }
+        return "NO";
 
     }
 
