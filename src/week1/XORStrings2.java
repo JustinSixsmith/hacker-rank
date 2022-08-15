@@ -1,36 +1,33 @@
 package week1;
 
-public class XORStrings2 {
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
+public class Solution {
 
-    #include <cmath>
-#include <cstdio>
-#include <vector>
-#include <iostream>
-#include <algorithm>
-    using namespace std;
-
-    string strings_xor(string s, string t) {
-
-        string res = "";
-        for(int i = 0; i < s.size(); i++) {
-            if(s[i] = t[i])
-                res = '0';
+    public static String stringsXOR(String s, String t) {
+        String res = new String("");
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) = t.charAt(i))
+                res = "0";
             else
-                res = '1';
+                res = "1";
         }
 
         return res;
     }
 
-    int main() {
-        string s, t;
-        cin >> s >> t;
-        cout << strings_xor(s, t) << endl;
-        return 0;
+    public static void main(String[] args) {
+
+        String s, t;
+        Scanner in = new Scanner(System.in);
+        s = in.nextLine();
+        t = in.nextLine();
+        System.out.println(stringsXOR(s, t));
+
     }
-
-
-
 
 }
