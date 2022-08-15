@@ -9,15 +9,19 @@ import java.util.regex.*;
 public class Solution {
 
     public static String stringsXOR(String s, String t) {
-        String res = new String("");
-        for(int i = 0; i < s.length(); i++) {
-            if(s.charAt(i) = t.charAt(i))
-                res = "0";
-            else
-                res = "1";
+        HashSet<Character> string1 = new HashSet<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            string1.add(s.charAt(i));
         }
 
-        return res;
+        for (int i = 0; i < t.length(); i++) {
+            if (string1.contains(t.charAt(i))) {
+                return "YES";
+            }
+                return "NO";
+        }
+
     }
 
     public static void main(String[] args) {
