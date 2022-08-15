@@ -12,15 +12,15 @@ public class Solution {
         HashSet<Character> sChars = new HashSet<>();
         HashSet<Character> tChars = new HashSet<>();
 
-        String res = new String("");
+        StringBuilder res = new StringBuilder(new String(""));
         for(int i = 0; i < s.length(); i++) {
             if(s.charAt(i) == t.charAt(i))
-                res += "0";
+                res.append("0");
             else
-                res += "1";
+                res.append("1");
         }
 
-        return res;
+        return res.toString();
 
     }
 
