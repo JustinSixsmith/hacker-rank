@@ -6,7 +6,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Solution {
+public class XORStrings2 {
 
     public static String stringsXOR(String s, String t) {
         StringBuilder res = new StringBuilder(new String(""));
