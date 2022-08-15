@@ -16,9 +16,7 @@ public class XORStrings2 {
             else
                 res.append("1");
         }
-
         return res.toString();
-
     }
 
     public static void main(String[] args) {
