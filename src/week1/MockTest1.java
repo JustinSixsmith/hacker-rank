@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.toList;
 
 
 
-class MockTest1 {
+class Result1 {
 
     /*
      * Complete the 'findMedian' function below.
@@ -25,12 +25,13 @@ class MockTest1 {
 
     public static int findMedian(List<Integer> arr) {
         // Write your code here
-        return arr.size() / 2;
+        Collections.sort(arr);
+        int medianIndex = arr.size() / 2;
+        return arr.get(medianIndex);
     }
-
 }
 
-public class Solution {
+public class MockTest1 {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
@@ -41,7 +42,7 @@ public class Solution {
                 .map(Integer::parseInt)
                 .collect(toList());
 
-        int result = Result.findMedian(arr);
+        int result = Result1.findMedian(arr);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
