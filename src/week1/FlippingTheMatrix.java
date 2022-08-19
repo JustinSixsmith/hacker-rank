@@ -25,20 +25,28 @@ class Result2 {
 
     public static int flippingMatrix(List<List<Integer>> matrix) {
         // Write your code here
-        int boxSize = matrix.size() / 2;
-        int tempSum = 0;
-        for (int i = 0; i < boxSize; i++) {
-            for (int j = 0; j < boxSize; j++) {
-
+        int n = matrix.size() / 2;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int a = matrix.get(i).get(j);
+                int b = matrix.get(i).get(matrix.size()-j);
+                int c = matrix.get(matrix.size()-1-i).get(j);
+                int d = matrix.get(matrix.size()-1-i).get(matrix.size()-j);
+                List<Integer> sub = Arrays.asList(a, b, c, d);
+                sum += Collections.max(sub);
             }
         }
-        return 1;
+        return sum;
     }
 
 }
 
 public class FlippingTheMatrix {
     public static void main(String[] args) throws IOException {
+
+
+
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
