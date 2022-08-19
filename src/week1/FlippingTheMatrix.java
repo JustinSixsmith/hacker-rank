@@ -30,11 +30,10 @@ class Result2 {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int a = matrix.get(i).get(j);
-                int b = matrix.get(i).get(matrix.size()-j);
-                int c = matrix.get(matrix.size()-1-i).get(j);
-                int d = matrix.get(matrix.size()-1-i).get(matrix.size()-j);
-                List<Integer> sub = Arrays.asList(a, b, c, d);
-                sum += Collections.max(sub);
+                int b = matrix.get(i).get((2 * n) - j - 1);
+                int c = matrix.get((2 * n) - i - 1).get(j);
+                int d = matrix.get((2 * n) - i - 1).get((2 * n) - j - 1);
+                sum += Math.max(a, Math.max(b, Math.max(c, d)));
             }
         }
         return sum;
