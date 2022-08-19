@@ -29,7 +29,7 @@ class Result2 {
         int tempSum = 0;
         for (int i = 0; i < boxSize; i++) {
             for (int j = 0; j < boxSize; j++) {
-                matrix.get(j);
+
             }
         }
         return 1;
@@ -37,7 +37,7 @@ class Result2 {
 
 }
 
-public class MockTest2 {
+public class FlippingTheMatrix {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
