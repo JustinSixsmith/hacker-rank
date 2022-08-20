@@ -9,6 +9,7 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
+
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -26,17 +27,18 @@ class Result {
     public static int sockMerchant(int n, List<Integer> ar) {
         // Write your code here
         int pairs = 0;
-        int singles = 0;
         HashMap<Integer, Integer> socks = new HashMap<>();
         // Look at socks
-        for (Integer sock : socks) {
+        for (Integer sock : ar) {
             if (socks.containsKey(sock)) {
-                socks.put(sock, socks.get(sock) + 1);
-                pairs++;
-                singles--;
+                if (socks.get(sock) == 2) {
+                    socks.put(sock, socks.get(sock) - 1);
+                } else {
+                    socks.put(sock, socks.get(sock) + 1);
+                    pairs++;
+                }
             } else {
                 socks.put(sock, 1);
-                singles++;
             }
         }
         return pairs;
