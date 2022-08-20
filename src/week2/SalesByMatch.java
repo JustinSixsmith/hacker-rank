@@ -25,7 +25,21 @@ class Result {
 
     public static int sockMerchant(int n, List<Integer> ar) {
         // Write your code here
-
+        int pairs = 0;
+        int singles = 0;
+        HashMap<Integer, Integer> socks = new HashMap<>();
+        // Look at socks
+        for (Integer sock : socks) {
+            if (socks.containsKey(sock)) {
+                socks.put(sock, socks.get(sock) + 1);
+                pairs++;
+                singles--;
+            } else {
+                socks.put(sock, 1);
+                singles++;
+            }
+        }
+        return pairs;
     }
 
 }
