@@ -9,55 +9,43 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
-
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-class SalesResult {
+class Result {
 
     /*
-     * Complete the 'sockMerchant' function below.
+     * Complete the 'pageCount' function below.
      *
      * The function is expected to return an INTEGER.
      * The function accepts following parameters:
      *  1. INTEGER n
-     *  2. INTEGER_ARRAY ar
+     *  2. INTEGER p
      */
 
-    public static int sockMerchant(int n, List<Integer> ar) {
+    public static int pageCount(int n, int p) {
         // Write your code here
-        int pairs = 0;
-        HashMap<Integer, Integer> socks = new HashMap<>();
-        // Look at socks
-        for (Integer sock : ar) {
-            if (socks.containsKey(sock)) {
-                if (socks.get(sock) == 2) {
-                    socks.put(sock, socks.get(sock) - 1);
-                } else {
-                    socks.put(sock, socks.get(sock) + 1);
-                    pairs++;
-                }
-            } else {
-                socks.put(sock, 1);
-            }
+        int midPage = (n / 2);
+        if (p > midPage) {
+            n += 1;
+            return ((n - p) / 2);
+        } else {
+            return p / 2;
         }
-        return pairs;
     }
 
 }
 
-public class SalesByMatch {
+public class DrawingBook {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int n = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> ar = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-                .map(Integer::parseInt)
-                .collect(toList());
+        int p = Integer.parseInt(bufferedReader.readLine().trim());
 
-        int result = SalesResult.sockMerchant(n, ar);
+        int result = Result.pageCount(n, p);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
