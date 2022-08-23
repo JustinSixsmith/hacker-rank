@@ -1,18 +1,10 @@
 package week2;
 
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
 
-class Result {
+class TowerResult {
 
     /*
      * Complete the 'towerBreakers' function below.
@@ -25,7 +17,8 @@ class Result {
 
     public static int towerBreakers(int n, int m) {
         // Write your code here
-
+        if(m == 1 || n%2 == 0) return 2;
+        else return 1;
     }
 
 }
@@ -45,7 +38,7 @@ public class TowerBreakers {
 
                 int m = Integer.parseInt(firstMultipleInput[1]);
 
-                int result = Result.towerBreakers(n, m);
+                int result = TowerResult.towerBreakers(n, m);
 
                 bufferedWriter.write(String.valueOf(result));
                 bufferedWriter.newLine();
