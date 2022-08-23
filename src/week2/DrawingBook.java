@@ -9,6 +9,7 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
+
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -27,11 +28,12 @@ class Result {
         // Write your code here
         int midPage = (n / 2);
         if (p > midPage) {
-            n += 1;
-            return ((n - p) / 2);
-        } else {
-            return p / 2;
+            if (n % 2 == 0) {
+                n += 1;
+            }
+            return (n - p) / 2;
         }
+        return p / 2;
     }
 
 }
