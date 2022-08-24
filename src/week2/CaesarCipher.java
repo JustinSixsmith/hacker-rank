@@ -15,9 +15,19 @@ class CaesarResult {
      *  2. INTEGER k
      */
 
-    public static String caesarCipher(String s, int k) {
+    public static StringBuilder caesarCipher(String s, int k) {
         // Write your code here
+        k = k % 26;
+        StringBuilder result = new StringBuilder("");
 
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isAlphabetic(i)) {
+                result.append(s.charAt(i));
+            } else if (Character.isUpperCase(i)) {
+                result.append(s.charAt(i) + k);
+            }
+        }
+        return result;
     }
 
 }
