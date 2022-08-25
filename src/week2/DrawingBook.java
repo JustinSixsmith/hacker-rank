@@ -4,7 +4,7 @@ import java.io.*;
 
 import static java.util.stream.Collectors.joining;
 
-class Result {
+class PageResult {
 
     /*
      * Complete the 'pageCount' function below.
@@ -37,7 +37,7 @@ public class DrawingBook {
 
         int p = Integer.parseInt(bufferedReader.readLine().trim());
 
-        int result = TowerResult.pageCount(n, p);
+        int result = PageResult.pageCount(n, p);
 
         bufferedWriter.write(String.valueOf(result));
         bufferedWriter.newLine();
