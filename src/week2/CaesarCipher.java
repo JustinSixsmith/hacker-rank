@@ -17,19 +17,32 @@ class CaesarResult {
 
     public static String caesarCipher(String s, int k) {
         // Write your code here
-//        k = k % 26;
+        k = k % 26;
         String result = "";
 
         for (int i = 0; i < s.length(); i++) {
-            if (!Character.isAlphabetic(i)) {
-                result += s.charAt(i);
+            if (!Character.isAlphabetic(s.charAt(i))) {
+                result += String.valueOf(s.charAt(i));
             } else {
-                result += (int)s.charAt(i) + k;
+                if (Character.isUpperCase(s.charAt(i))) {
+                    int newCharNum = (int) s.charAt(i) + k;
+                    if (newCharNum > (int) 'Z') {
+                        newCharNum -= (int) 'Z' + (int) 'A' - 1;
+                    }
+                    char newChar = (char) newCharNum;
+                    result += String.valueOf(newChar);
+                } else {
+                    int newCharNum = (int) s.charAt(i) + k;
+                    if (newCharNum > (int) 'z') {
+                        newCharNum -= (int) 'z' + (int) 'a' - 1;
+                    }
+                    char newChar = (char) newCharNum;
+                    result += String.valueOf(newChar);
+                }
             }
         }
-        return result;
+            return result;
     }
-
 }
 
 public class CaesarCipher {
