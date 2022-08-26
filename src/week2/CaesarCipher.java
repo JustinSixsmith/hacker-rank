@@ -24,21 +24,30 @@ class CaesarResult {
             if (!Character.isAlphabetic(s.charAt(i))) {
                 result += String.valueOf(s.charAt(i));
             } else {
-                if (Character.isUpperCase(s.charAt(i))) {
                     int newCharNum = (int) s.charAt(i) + k;
-                    if (newCharNum > (int) 'Z') {
-                        newCharNum -= (int) 'Z' + (int) 'A' - 1;
+//                System.out.println(newCharNum);
+                    if (newCharNum > (int) 'z' || newCharNum > (int) 'Z' && newCharNum < (int) 'a') {
+                        newCharNum -= 26;
+//                        System.out.println(newCharNum);
                     }
                     char newChar = (char) newCharNum;
-                    result += String.valueOf(newChar);
-                } else {
-                    int newCharNum = (int) s.charAt(i) + k;
-                    if (newCharNum > (int) 'z') {
-                        newCharNum -= (int) 'z' + (int) 'a' - 1;
-                    }
-                    char newChar = (char) newCharNum;
-                    result += String.valueOf(newChar);
-                }
+                result += String.valueOf(newChar);
+
+//                if (Character.isUpperCase(s.charAt(i))) {
+//                    int newCharNum = (int) s.charAt(i) + k;
+//                    if (newCharNum > (int) 'Z') {
+//                        newCharNum -= (int) 'Z' + (int) 'A' - 1;
+//                    }
+//                    char newChar = (char) newCharNum;
+//                    result += String.valueOf(newChar);
+//                } else {
+//                    int newCharNum = (int) s.charAt(i) + k;
+//                    if (newCharNum > (int) 'z') {
+//                        newCharNum -= (int) 'z' + (int) 'a' - 1;
+//                    }
+//                    char newChar = (char) newCharNum;
+//                    result += String.valueOf(newChar);
+//                }
             }
         }
             return result;
@@ -47,22 +56,25 @@ class CaesarResult {
 
 public class CaesarCipher {
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int n = Integer.parseInt(bufferedReader.readLine().trim());
+        System.out.println(CaesarResult.caesarCipher("middle-Outz", 2));
 
-        String s = bufferedReader.readLine();
-
-        int k = Integer.parseInt(bufferedReader.readLine().trim());
-
-        String result = CaesarResult.caesarCipher(s, k);
-
-        bufferedWriter.write(result);
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+//
+//        int n = Integer.parseInt(bufferedReader.readLine().trim());
+//
+//        String s = bufferedReader.readLine();
+//
+//        int k = Integer.parseInt(bufferedReader.readLine().trim());
+//
+//        String result = CaesarResult.caesarCipher(s, k);
+//
+//        bufferedWriter.write(result);
+//        bufferedWriter.newLine();
+//
+//        bufferedReader.close();
+//        bufferedWriter.close();
     }
 }
 
