@@ -25,29 +25,18 @@ class CaesarResult {
                 result += String.valueOf(s.charAt(i));
             } else {
                     int newCharNum = (int) s.charAt(i) + k;
-//                System.out.println(newCharNum);
-                    if (newCharNum > (int) 'z' || newCharNum > (int) 'Z' && newCharNum < (int) 'a') {
-                        newCharNum -= 26;
-//                        System.out.println(newCharNum);
+                    if (Character.isUpperCase(s.charAt(i))) {
+                        if (newCharNum > (int) 'Z') {
+                            newCharNum -= 26;
+                        }
                     }
+                if (Character.isLowerCase(s.charAt(i))) {
+                    if (newCharNum > (int) 'z') {
+                        newCharNum -= 26;
+                    }
+                }
                     char newChar = (char) newCharNum;
-                result += String.valueOf(newChar);
-
-//                if (Character.isUpperCase(s.charAt(i))) {
-//                    int newCharNum = (int) s.charAt(i) + k;
-//                    if (newCharNum > (int) 'Z') {
-//                        newCharNum -= (int) 'Z' + (int) 'A' - 1;
-//                    }
-//                    char newChar = (char) newCharNum;
-//                    result += String.valueOf(newChar);
-//                } else {
-//                    int newCharNum = (int) s.charAt(i) + k;
-//                    if (newCharNum > (int) 'z') {
-//                        newCharNum -= (int) 'z' + (int) 'a' - 1;
-//                    }
-//                    char newChar = (char) newCharNum;
-//                    result += String.valueOf(newChar);
-//                }
+                    result += String.valueOf(newChar);
             }
         }
             return result;
