@@ -24,22 +24,22 @@ class CaesarResult {
             if (!Character.isAlphabetic(s.charAt(i))) {
                 result += String.valueOf(s.charAt(i));
             } else {
-                    int newCharNum = (int) s.charAt(i) + k;
-                    if (Character.isUpperCase(s.charAt(i))) {
-                        if (newCharNum > (int) 'Z') {
-                            newCharNum -= 26;
-                        }
+                int newCharNum = (int) s.charAt(i) + k;
+                if (Character.isUpperCase(s.charAt(i))) {
+                    if (newCharNum > (int) 'Z') {
+                        newCharNum -= 26;
                     }
+                }
                 if (Character.isLowerCase(s.charAt(i))) {
                     if (newCharNum > (int) 'z') {
                         newCharNum -= 26;
                     }
                 }
-                    char newChar = (char) newCharNum;
-                    result += String.valueOf(newChar);
+                char newChar = (char) newCharNum;
+                result += String.valueOf(newChar);
             }
         }
-            return result;
+        return result;
     }
 }
 
