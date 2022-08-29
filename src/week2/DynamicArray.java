@@ -3,6 +3,7 @@ package week2;
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
+
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -25,7 +26,6 @@ class DynamicResult {
         for (int i = 0; i < n; i++) {
             arr.add(new ArrayList<Integer>());
         }
-
         // Declare an integer and initialize it to zero
         int lastAnswer = 0;
 
@@ -34,11 +34,19 @@ class DynamicResult {
 
         for (List<Integer> query :
                 queries) {
-            
+            if (query.get(0).equals(1)) {
+                int idx = (query.get(1) ^ lastAnswer) % n;
+
+                // Append integer y to end of arr[idx]
+                arr.get(idx).add(query.get(2));
+            } else {
+                int idx = (query.get(1) ^ lastAnswer) % n;
+                lastAnswer = arr.get(idx).get(query.get(2) % arr.get(idx).size());
+                answerArray.add(lastAnswer);
+            }
         }
-
+        return answerArray;
     }
-
 }
 
 public class DynamicArray {
