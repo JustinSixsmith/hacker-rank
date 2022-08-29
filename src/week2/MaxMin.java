@@ -9,8 +9,8 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
+
+import static java.util.stream.Collectors.*;
 
 class MaxMinResult {
 
@@ -25,9 +25,16 @@ class MaxMinResult {
 
     public static int maxMin(int k, List<Integer> arr) {
         // Write your code here
-
+        Collections.sort(arr);
+        int fairness = Integer.MAX_VALUE;
+        for (int i = arr.size() - 1; i > k - 1 ; i--) {
+            int sum = arr.get(i) - arr.get(i - k + 1);
+            if (sum <= fairness) {
+                fairness = sum;
+            }
+        }
+        return fairness;
     }
-
 }
 
 public class MaxMin {
