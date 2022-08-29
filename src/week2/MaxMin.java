@@ -26,14 +26,14 @@ class MaxMinResult {
     public static int maxMin(int k, List<Integer> arr) {
         // Write your code here
         Collections.sort(arr);
-        int fairness = arr.get(arr.size()-1);
-        for (int i = arr.size() - 1; i > k - 1 ; i--) {
-            int sum = arr.get(i) - arr.get(i - k + 1);
-            if (sum <= fairness) {
-                fairness = sum;
+        int sum = Integer.MAX_VALUE;
+        for (int i = 0; i + k - 1 < arr.size(); i++) {
+            int temp = arr.get(i + k - 1) - arr.get(i);
+            if (temp < sum) {
+                sum = temp;
             }
         }
-        return fairness;
+        return sum;
     }
 }
 
