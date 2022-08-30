@@ -9,6 +9,7 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
+
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -23,12 +24,21 @@ class GridResult {
 
     public static String gridChallenge(List<String> grid) {
         // Write your code here
-        // Cycle through the string elements of the grid
-        for (String letters :
-                grid) {
-            letters.
+
+        char[] charArray = new char[grid.get(0).length()];
+
+        for (int i = 0; i < grid.size(); i++) {
+            charArray = grid.get(i).toCharArray();
+            Arrays.sort(charArray);
+            grid.set(i, String.valueOf(charArray));
+            if (i > 0) {
+                for (int j = 0; j < grid.get(i).length(); j++) {
+                    if (grid.get(i).charAt(j) < grid.get(i - 1).charAt(j)) {
+                        return "NO";
+                    }
+                }
+            }
         }
-        System.out.println(grid);
         return "YES";
     }
 }
