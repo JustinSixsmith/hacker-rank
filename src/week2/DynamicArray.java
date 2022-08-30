@@ -24,7 +24,7 @@ class DynamicResult {
         // Declare a two-dimensional array of empty arrays
         List<ArrayList<Integer>> arr = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            arr.add(new ArrayList<Integer>());
+            arr.add(new ArrayList<>());
         }
         // Declare an integer and initialize it to zero
         int lastAnswer = 0;
