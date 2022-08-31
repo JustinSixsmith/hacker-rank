@@ -25,7 +25,7 @@ class GridResult {
     public static String gridChallenge(List<String> grid) {
         // Write your code here
 
-        char[] charArray = new char[grid.get(0).length()];
+        char[] charArray;
 
         for (int i = 0; i < grid.size(); i++) {
             charArray = grid.get(i).toCharArray();
@@ -47,7 +47,7 @@ public class GridChallenge {
     public static void main(String[] args) throws IOException {
 
         List<String> grid = new ArrayList<>(Arrays.asList("ebacd", "fghij", "olmkn", "trpqs", "xywuv"));
-        GridResult.gridChallenge(grid);
+        System.out.println(GridResult.gridChallenge(grid));
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 //        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
