@@ -19,9 +19,29 @@ class SherlockResult {
 
     public static String balancedSums(List<Integer> arr) {
         // Write your code here
+        String answer = "NO";
+        int leftSum = 0;
+        int rightSum = 0;
 
+        // Start with the element at index 1, end with element in second to last position
+        for (int i = 1; i < arr.size() - 1; i++) {
+
+            // Add up left side
+            for (int j = 0; j < i; j++) {
+                leftSum += arr.get(j);
+            }
+            // Add up right side
+            for (int j = i + 1; j < arr.size(); j++) {
+                rightSum += arr.get(j);
+            }
+
+            // Compare sides
+            if (leftSum == rightSum) {
+                answer = "YES";
+            }
+        }
+        return answer;
     }
-
 }
 
 public class SherlockAndArray {
