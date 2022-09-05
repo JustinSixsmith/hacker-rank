@@ -19,21 +19,20 @@ class SherlockResult {
 
     public static String balancedSums(List<Integer> arr) {
         // Write your code here
-        int i=0, j=arr.size()-1;
-        int left=arr.get(i), right=arr.get(j);
-        while(i < j){
-            if(left <= right){
+        int i = 0, j = arr.size()-1;
+        int left = arr.get(i), right = arr.get(j);
+        while(i < j) {
+            if (left <= right) {
                 i++;
                 left += arr.get(i);
-            }
-            else {
+            } else {
                 j--;
                 right += arr.get(j);
             }
         }
-        if(right == left){
+        if (right == left) {
             return "YES";
-        }else {
+        } else {
             return "NO";
         }
     }
