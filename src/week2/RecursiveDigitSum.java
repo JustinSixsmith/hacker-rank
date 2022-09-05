@@ -21,29 +21,43 @@ class RecursiveResult {
 
     public static int superDigit(String n, int k) {
         // Write your code here
+        String p = n;
+        while (k > 1) {
+            p += n;
+            k--;
+        }
+        System.out.println(p);
 
+        int digitSum = 0;
+        for (int i = 0; i < p.length(); i++) {
+            int digit = Integer.parseInt(String.valueOf(p.charAt(i)));
+            digitSum += digit;
+        }
+        return digitSum;
     }
 
 }
 
 public class RecursiveDigitSum {
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        System.out.println(RecursiveResult.superDigit("2", 21));
 
-        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
-
-        String n = firstMultipleInput[0];
-
-        int k = Integer.parseInt(firstMultipleInput[1]);
-
-        int result = RecursiveResult.superDigit(n, k);
-
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+//
+//        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+//
+//        String n = firstMultipleInput[0];
+//
+//        int k = Integer.parseInt(firstMultipleInput[1]);
+//
+//        int result = RecursiveResult.superDigit(n, k);
+//
+//        bufferedWriter.write(String.valueOf(result));
+//        bufferedWriter.newLine();
+//
+//        bufferedReader.close();
+//        bufferedWriter.close();
     }
 }
 
