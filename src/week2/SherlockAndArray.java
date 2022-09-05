@@ -21,22 +21,21 @@ class SherlockResult {
         // Write your code here
         int i=0, j=arr.size()-1;
         int left=arr.get(i), right=arr.get(j);
-        while(i<j){
-            if(left<=right){
+        while(i < j){
+            if(left <= right){
                 i++;
-                left+=arr.get(i);
-
+                left += arr.get(i);
             }
             else {
                 j--;
-                right+=arr.get(j);
-
+                right += arr.get(j);
             }
-
         }
-        if(right==left){
+        if(right == left){
             return "YES";
-        }else return "NO";
+        }else {
+            return "NO";
+        }
     }
 }
 
