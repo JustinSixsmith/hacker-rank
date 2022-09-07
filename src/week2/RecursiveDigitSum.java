@@ -23,7 +23,7 @@ class RecursiveResult {
 
     public static int superDigit(String n, int k) {
         // Write your code here
-        if(n.length()==1){
+        if(n.length() == 1) {
             return Integer.parseInt(n);
         }
 
