@@ -1,5 +1,7 @@
 package week2;
 
+import com.sun.security.jgss.InquireSecContextPermission;
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -21,27 +23,22 @@ class RecursiveResult {
 
     public static int superDigit(String n, int k) {
         // Write your code here
-        String p = n;
-        while (k > 1) {
-            p += n;
-            k--;
+        if(n.length()==1){
+            return Integer.parseInt(n);
         }
 
-        while (p.length() > 1) {
-            int digitSum = 0;
-            for (int i = 0; i < p.length(); i++) {
-                int digit = Integer.parseInt(String.valueOf(p.charAt(i)));
-                digitSum += digit;
-            }
-            p = String.valueOf(digitSum);
+        long a = 0;
+        for (int i = 0; i < n.length(); i++) {
+            a += n.charAt(i) - '0';
         }
-        return Integer.parseInt(p);
+        a = a * k;
+        return superDigit(Long.toString(a), 1);
     }
 }
 
 public class RecursiveDigitSum {
     public static void main(String[] args) throws IOException {
-        System.out.println(RecursiveResult.superDigit("2", 13));
+        System.out.println(RecursiveResult.superDigit("17", 13));
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 //        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
