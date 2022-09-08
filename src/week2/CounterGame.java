@@ -19,33 +19,17 @@ class CounterResult {
 
     public static String counterGame(long n) {
         // Write your code here
-
         int totalPlays = 0;
 
-        while(n >= 1){
-
-            if((n & (n-1)) != 0)
-                n = n-Long.highestOneBit(n);
-            else
-                n>>=1;
-            totalPlays++;
+        while (n >= 1) {
+            if ((n & (n - 1)) != 0) {
+                n = n - Long.highestOneBit(n);
+            } else {
+                n >>= 1;
+                totalPlays++;
+            }
         }
-
-        return totalPlays%2 ==0 ? "Louise" : "Richard";
-
-        // ---------------------------------------------//
-
-//        int plays = 1;
-//        if ( n == 1) {
-//            return "Richard";
-//        }
-//        if ((n & (n - 1)) != 0) {
-//            n = n - Long.highestOneBit(n);
-//        } else {
-//            n>>=1;
-//            plays++;
-//        }
-//        return "Richard";
+        return totalPlays % 2 == 0 ? "Louise" : "Richard";
     }
 }
 
