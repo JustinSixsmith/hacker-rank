@@ -19,29 +19,40 @@ class CounterResult {
 
     public static String counterGame(long n) {
         // Write your code here
-
+        int plays = 1;
+        if ( n == 1) {
+            return "Richard";
+        }
+        if ((n & (n - 1)) != 0) {
+            n = n - Long.highestOneBit(n);
+        } else {
+            n>>=1;
+            plays++;
+        }
+        return "Richard";
     }
-
 }
 
 public class CounterGame {
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        System.out.println(CounterResult.counterGame(68));
 
-        int t = Integer.parseInt(bufferedReader.readLine().trim());
-
-        for (int tItr = 0; tItr < t; tItr++) {
-            long n = Long.parseLong(bufferedReader.readLine().trim());
-
-            String result = CounterResult.counterGame(n);
-
-            bufferedWriter.write(result);
-            bufferedWriter.newLine();
-        }
-
-        bufferedReader.close();
-        bufferedWriter.close();
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+//
+//        int t = Integer.parseInt(bufferedReader.readLine().trim());
+//
+//        for (int tItr = 0; tItr < t; tItr++) {
+//            long n = Long.parseLong(bufferedReader.readLine().trim());
+//
+//            String result = CounterResult.counterGame(n);
+//
+//            bufferedWriter.write(result);
+//            bufferedWriter.newLine();
+//        }
+//
+//        bufferedReader.close();
+//        bufferedWriter.close();
     }
 }
 
