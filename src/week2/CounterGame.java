@@ -32,7 +32,6 @@ class CounterResult {
             } else {
                 n = n / 2;
             }
-            // System.out.println("n = " + n);
             if (n == 1 && player == 0)
                 return "Louise";
             else if (n == 1)
