@@ -25,9 +25,9 @@ class CounterResult {
 
         while (n > 1) {
             String binaryStr = Long.toBinaryString(n);
-            String subString = binaryStr.substring(1, binaryStr.length());
+            String subString = binaryStr.substring(1);
             if (subString.contains("1")) {
-                binaryStr = subString.substring(subString.indexOf("1"),  subString.length());
+                binaryStr = subString.substring(subString.indexOf("1"));
                 n = Long.parseLong(binaryStr, 2);
             } else {
                 n = n / 2;
@@ -35,7 +35,7 @@ class CounterResult {
             // System.out.println("n = " + n);
             if (n == 1 && player == 0)
                 return "Louise";
-            else if (n == 1 && player == 1)
+            else if (n == 1)
                 return "Richard";
             else {
                 player = (player == 0) ? 1 : 0;
