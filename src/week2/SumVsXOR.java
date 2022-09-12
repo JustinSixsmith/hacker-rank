@@ -19,14 +19,24 @@ class SumResult {
 
     public static long sumXor(long n) {
         // Write your code here
-        int x = 0, count = 0;
-        while (x <= n) {
-            if ((x + n) == (x ^ n)) {
-                count++;
+        long result = 1;
+        while (n != 0) {
+            if (n % 2 == 0) {
+                result *= 2;
             }
-            x++;
+            n /= 2;
         }
-        return count;
+        return result;
+
+
+//        int x = 0, count = 0;
+//        while (x <= n) {
+//            if ((x + n) == (x ^ n)) {
+//                count++;
+//            }
+//            x++;
+//        }
+//        return count;
     }
 
 }
