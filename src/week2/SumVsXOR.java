@@ -43,18 +43,20 @@ class SumResult {
 
 public class SumVsXOR {
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        System.out.println(SumResult.sumXor(9));
 
-        long n = Long.parseLong(bufferedReader.readLine().trim());
-
-        long result = SumResult.sumXor(n);
-
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+//
+//        long n = Long.parseLong(bufferedReader.readLine().trim());
+//
+//        long result = SumResult.sumXor(n);
+//
+//        bufferedWriter.write(String.valueOf(result));
+//        bufferedWriter.newLine();
+//
+//        bufferedReader.close();
+//        bufferedWriter.close();
     }
 }
 
