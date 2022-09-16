@@ -52,7 +52,7 @@ class PalindromeResult {
 public class PalindromeIndex {
     public static void main(String[] args) throws IOException {
 
-        System.out.println(PalindromeResult.palindromeIndex("abbcpppcbba"));
+        System.out.println(PalindromeResult.palindromeIndex("aobbcppppcbba"));
 
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
