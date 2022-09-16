@@ -26,33 +26,21 @@ class PalindromeResult {
     public static int palindromeIndex(String s) {
         // Write your code here
 
-        StringBuilder reverseWord = new StringBuilder(), frontWord = new StringBuilder(), backWord = new StringBuilder();
-        int a = 0, b = 0;
-
+        int flag = -1, index = 0;
         for (int i = 0, j = s.length() - 1; i < s.length(); i++, j--) {
-            reverseWord.append(s.charAt(j));
-            if (s.charAt(i) == s.charAt(j)) {
-                frontWord.append(s.charAt(i));
-            } else {
-                a = i;
-                b = j;
+            if (s.charAt(i) != s.charAt(j)) {
+                flag++;
+                index = i;
+                j++;
+                if (flag > 0) {
+                    return j;
+                }
             }
         }
-        String frontString = String.valueOf(frontWord);
-        if (String.valueOf(reverseWord).equals(s)) {
-            return -1;
+        if (flag == 0) {
+            return index;
         }
-
-        for (int i = frontString.length() - 1; i >= 0; i--) {
-            backWord.append(frontWord.charAt(i));
-        }
-
-        String backString = String.valueOf(backWord);
-        if (frontString.equals(backString)) {
-            return a;
-        } else {
-            return b;
-        }
+        return flag;
     }
 
 }
