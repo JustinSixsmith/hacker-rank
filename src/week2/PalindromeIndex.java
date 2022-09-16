@@ -26,29 +26,33 @@ class PalindromeResult {
     public static int palindromeIndex(String s) {
         // Write your code here
 
+        int midway = s.length() / 2;
+
         int flag = -1, index = 0;
-        for (int i = 0, j = s.length() - 1; i < s.length(); i++, j--) {
+        for (int i = 0, j = s.length() - 1; i < midway; i++, j--) {
             if (s.charAt(i) != s.charAt(j)) {
                 flag++;
                 index = i;
                 j++;
                 if (flag > 0) {
-                    return j;
+//                    System.out.println("returning j");
+                    return j - 1;
                 }
             }
         }
         if (flag == 0) {
+//            System.out.println("returning index");
             return index;
         }
+//        System.out.println("returning flag");
         return flag;
     }
-
 }
 
 public class PalindromeIndex {
     public static void main(String[] args) throws IOException {
 
-        System.out.println(PalindromeResult.palindromeIndex("abcccbba"));
+        System.out.println(PalindromeResult.palindromeIndex("abbcpppcbba"));
 
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
