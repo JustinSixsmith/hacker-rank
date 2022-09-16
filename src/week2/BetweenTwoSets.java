@@ -20,13 +20,31 @@ class TwoSetsResult {
     public static int getTotalX(List<Integer> a, List<Integer> b) {
         // Write your code here
         int counter = 0;
+        boolean status = true;
 
+        int min = a.get(a.size() - 1);
+        int max = b.get(0);
+
+        while (min <= max) {
+            for (Integer num : a) {
+                if (min % num != 0) {
+                    status = false;
+                }
+                if (num % min != 0) {
+                    status = false;
+                }
+                if (status) {
+                    counter++;
+                }
+                min += a.get(0);
+            }
+        }
         return counter;
     }
 
 }
 
-public class betweenTwoSets {
+public class BetweenTwoSets {
     public static void main(String[] args) throws IOException {
         List<Integer> a = new ArrayList<>(Arrays.asList(2, 6));
         List<Integer> b = new ArrayList<>(Arrays.asList(16, 32, 96));
