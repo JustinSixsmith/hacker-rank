@@ -2,8 +2,11 @@ package week2;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.minBy;
 
 
 class TwoSetsResult {
@@ -19,25 +22,33 @@ class TwoSetsResult {
 
     public static int getTotalX(List<Integer> a, List<Integer> b) {
         // Write your code here
-        int counter = 0;
+        int counter = 0, factor = 0;
         boolean status = true;
 
-        int min = a.get(a.size() - 1);
-        int max = b.get(0);
+        int min = Collections.max(a);
+        int max = Collections.min(b);
+        System.out.println(min);
+        System.out.println(max);
 
         while (min <= max) {
-            for (Integer num : a) {
-                if (min % num != 0) {
+            for (Integer integer : a) {
+                if (min % integer != 0) {
                     status = false;
+                    break;
                 }
-                if (num % min != 0) {
-                    status = false;
-                }
-                if (status) {
-                    counter++;
-                }
-                min += a.get(0);
             }
+            if (status) {
+                for (Integer integer : b) {
+                    if (integer % min != 0) {
+                        status = false;
+                        break;
+                    }
+                }
+            }
+            if (status) {
+                counter++;
+            }
+            min++;
         }
         return counter;
     }
