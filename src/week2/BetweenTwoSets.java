@@ -23,33 +23,22 @@ class TwoSetsResult {
     public static int getTotalX(List<Integer> a, List<Integer> b) {
         // Write your code here
         int counter = 0, factor = 0;
-        int status = 0;
+        boolean status = true;
+
 
         int min = Collections.max(a);
         int max = Collections.min(b);
         System.out.println(min);
         System.out.println(max);
 
-        while (min <= max) {
-            status = 0;
-            for (Integer integer : a) {
-                if (min % integer != 0) {
-                    status++;
-                    break;
+        for (Integer integer : b) {
+            while (min <= max) {
+                status = min % integer == 0;
+                if (status) {
+                    counter++;
                 }
+                min++;
             }
-            if (status == 0) {
-                for (Integer integer : b) {
-                    if (integer % min != 0) {
-                        status++;
-                        break;
-                    }
-                }
-            }
-            if (status == 0) {
-                counter++;
-            }
-            min++;
         }
         return counter;
     }
