@@ -25,7 +25,7 @@ class TwoSetsResult {
         int minA = Collections.min(a);
         int testNum = Collections.max(a);
         int minB = Collections.min(b);
-        int count = 0;
+        int count = 0;;
 
         while (testNum <= minB) {
             boolean status = true;
@@ -56,7 +56,7 @@ class TwoSetsResult {
 
 public class BetweenTwoSets {
     public static void main(String[] args) throws IOException {
-        List<Integer> a = new ArrayList<>(Arrays.asList(2, 6));
+        List<Integer> a = new ArrayList<>(Arrays.asList(2, 4));
         List<Integer> b = new ArrayList<>(Arrays.asList(16, 32, 96));
         System.out.println(TwoSetsResult.getTotalX(a, b));
 
