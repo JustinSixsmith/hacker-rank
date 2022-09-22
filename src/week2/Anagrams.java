@@ -45,7 +45,6 @@ class AnagramsResult {
                 bChars.remove(character);
             }
         }
-
         return count;
     }
 
