@@ -9,6 +9,7 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
+
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -26,6 +27,31 @@ class BombermanResult {
     public static List<String> bomberMan(int n, List<String> grid) {
         // Write your code here
 
+        if (n < 2) {
+            return grid;
+        }
+
+        List<String> stringGrid = new ArrayList<>();
+
+        if (n % 2 == 0) {
+            for (int i = 0; i < grid.size(); i++) {
+                String newRow = grid.get(i).replaceAll("\\.", "O");
+                stringGrid.add(newRow);
+            }
+            return stringGrid;
+        }
+
+        for (int i = 0; i < grid.size(); i++) {
+            for (int j = 0; j < grid.get(0).length(); j++) {
+                if (grid.get(i).charAt(j) == 'O') {
+
+                }
+            }
+        }
+
+        
+
+        return newGrid;
     }
 
 }
@@ -33,6 +59,9 @@ class BombermanResult {
 public class theBombermanGame {
     public static void main(String[] args) throws IOException {
 
+        List<String> grid = new ArrayList<>(Arrays.asList(".......", "...O...", "....O..", ".......", "OO.....", "OO....."));
+
+        System.out.println(BombermanResult.bomberMan(2, grid));
 
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
