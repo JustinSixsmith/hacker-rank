@@ -27,9 +27,6 @@ class AnagramsResult {
         String aStr = s.substring(0, halfway);
         String bStr = s.substring(halfway);
 
-        System.out.println(aStr);
-        System.out.println(bStr);
-
         if (aStr.length() != bStr.length()) {
             return -1;
         }
@@ -44,6 +41,8 @@ class AnagramsResult {
         for (Character character : aChars) {
             if (!(bChars.contains(character))) {
                 count++;
+            } else {
+                bChars.remove(character);
             }
         }
 
