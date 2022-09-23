@@ -41,16 +41,24 @@ class BombermanResult {
             return stringGrid;
         }
 
+        List<String> newGrid = new ArrayList<>();
+
         for (int i = 0; i < grid.size(); i++) {
             for (int j = 0; j < grid.get(0).length(); j++) {
-                if (grid.get(i).charAt(j) == 'O') {
-
+                StringBuilder sb = new StringBuilder();
+                if (grid.get(i).charAt(j) == 'O' ||
+                        grid.get(i - 1).charAt(j) == 'O' ||
+                        grid.get(i + 1).charAt(j) == 'O' ||
+                        grid.get(i).charAt(j - 1) == 'O' ||
+                        grid.get(i).charAt(j + 1) == 'O') {
+                    sb.append('.');
+                } else {
+                    sb.append('O');
                 }
+                String newRow = sb.toString();
+                newGrid.add(newRow);
             }
         }
-
-        
-
         return newGrid;
     }
 
@@ -61,7 +69,7 @@ public class theBombermanGame {
 
         List<String> grid = new ArrayList<>(Arrays.asList(".......", "...O...", "....O..", ".......", "OO.....", "OO....."));
 
-        System.out.println(BombermanResult.bomberMan(2, grid));
+        System.out.println(BombermanResult.bomberMan(3, grid));
 
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
