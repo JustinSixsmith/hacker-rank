@@ -40,28 +40,29 @@ class BombermanResult {
             }
             return stringGrid;
         }
-
         List<String> newGrid = new ArrayList<>();
+        while (n > 2) {
 
-        for (int i = 0; i < grid.size(); i++) {
-            for (int j = 0; j < grid.get(0).length(); j++) {
-                StringBuilder sb = new StringBuilder();
-                if (grid.get(i).charAt(j) == 'O' ||
-                        grid.get(i - 1).charAt(j) == 'O' ||
-                        grid.get(i + 1).charAt(j) == 'O' ||
-                        grid.get(i).charAt(j - 1) == 'O' ||
-                        grid.get(i).charAt(j + 1) == 'O') {
-                    sb.append('.');
-                } else {
-                    sb.append('O');
+            for (int i = 0; i < grid.size(); i++) {
+                for (int j = 0; j < grid.get(0).length(); j++) {
+                    StringBuilder sb = new StringBuilder();
+                    if (grid.get(i).charAt(j) == 'O' ||
+                            grid.get(i - 1).charAt(j) == 'O' ||
+                            grid.get(i + 1).charAt(j) == 'O' ||
+                            grid.get(i).charAt(j - 1) == 'O' ||
+                            grid.get(i).charAt(j + 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
+                    String newRow = sb.toString();
+                    newGrid.add(newRow);
                 }
-                String newRow = sb.toString();
-                newGrid.add(newRow);
             }
+            n -= 2;
         }
         return newGrid;
     }
-
 }
 
 public class theBombermanGame {
