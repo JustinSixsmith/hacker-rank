@@ -13,6 +13,14 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
+
+//If seconds are less than 2 (0, 1) that means the state is not changed.
+//        If the second is an even number that means the whole grid is planted with bombs.
+//        So any real calculation you need to do only 3, 5, 7, 9,. . .
+//        You get the grid state for the nth seconds when you detonate bombs from the previous odd second's state on a fully planted grid.
+//        So, to calculate the 3rd-second state you have to detonate bombs from the 1-second grid (initial state) on a fully planted grid.
+//        But, If you simulate a couple of examples on a paper you will see the state of the 3rd and 5th seconds are repeating on each odd second. So by only calculating the 3rd and 5th states, you can get any odd number. if (n-3)%4 = 0 that means state is the 3rd second state and if (n-5)%4 = 0 that means it's 5th second state.
+
 class BombermanResult {
 
     /*
@@ -40,12 +48,18 @@ class BombermanResult {
             }
             return stringGrid;
         }
-        List<String> newGrid = new ArrayList<>();
-        while (n > 2) {
+        if ((n - 1) % 4 != 0) {
+            return explode(grid);
+        }
+        return explode(explode(grid));
+    }
 
-            for (int i = 0; i < grid.size(); i++) {
-                for (int j = 0; j < grid.get(0).length(); j++) {
-                    StringBuilder sb = new StringBuilder();
+
+    public static List<String> explode(List<String> grid) {
+        List<String> newGrid = new ArrayList<>();
+            for (int i = 1; i < grid.size() - 1; i++) {
+                {StringBuilder sb = new StringBuilder();
+                    for (int j = 1; j < grid.get(0).length() - 1; j++) {
                     if (grid.get(i).charAt(j) == 'O' ||
                             grid.get(i - 1).charAt(j) == 'O' ||
                             grid.get(i + 1).charAt(j) == 'O' ||
@@ -55,14 +69,14 @@ class BombermanResult {
                     } else {
                         sb.append('O');
                     }
-                    String newRow = sb.toString();
-                    newGrid.add(newRow);
                 }
+                String newRow = sb.toString();
+                newGrid.add(newRow);
             }
-            n -= 2;
         }
         return newGrid;
     }
+
 }
 
 public class theBombermanGame {
@@ -70,7 +84,7 @@ public class theBombermanGame {
 
         List<String> grid = new ArrayList<>(Arrays.asList(".......", "...O...", "....O..", ".......", "OO.....", "OO....."));
 
-        System.out.println(BombermanResult.bomberMan(3, grid));
+        System.out.println(BombermanResult.bomberMan(4, grid));
 
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
