@@ -54,25 +54,55 @@ class BombermanResult {
         return explode(explode(grid));
     }
 
-
     public static List<String> explode(List<String> grid) {
         List<String> newGrid = new ArrayList<>();
-            for (int i = 1; i < grid.size() - 1; i++) {
-                {StringBuilder sb = new StringBuilder();
-                    for (int j = 1; j < grid.get(0).length() - 1; j++) {
-                    if (grid.get(i).charAt(j) == 'O' ||
-                            grid.get(i - 1).charAt(j) == 'O' ||
-                            grid.get(i + 1).charAt(j) == 'O' ||
-                            grid.get(i).charAt(j - 1) == 'O' ||
-                            grid.get(i).charAt(j + 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
-                }
-                String newRow = sb.toString();
-                newGrid.add(newRow);
+
+        for (int i = 1; i < grid.size() - 1; i++) {
+            StringBuilder sb = new StringBuilder();
+
+            if (grid.get(0).charAt(1) == 'O' ||
+                    grid.get(1).charAt(0) == 'O') {
+                sb.append('.');
+            } else {
+                sb.append('O');
             }
+
+            if (grid.get(0).charAt(grid.get(0).length() - 2) == 'O' ||
+                    grid.get(1).charAt(grid.get(1).length() - 1) == 'O') {
+                sb.append('.');
+            } else {
+                sb.append('O');
+            }
+
+            for (int j = 1; j < grid.get(0).length() - 1; j++) {
+
+                if (grid.get(i).charAt(j) == 'O' ||
+                        grid.get(i - 1).charAt(j) == 'O' ||
+                        grid.get(i + 1).charAt(j) == 'O' ||
+                        grid.get(i).charAt(j - 1) == 'O' ||
+                        grid.get(i).charAt(j + 1) == 'O') {
+                    sb.append('.');
+                } else {
+                    sb.append('O');
+                }
+
+                if (grid.get(grid.size() - 1).charAt(1) == 'O' ||
+                        grid.get(grid.size() - 2).charAt(0) == 'O') {
+                    sb.append('.');
+                } else {
+                    sb.append('O');
+                }
+
+                if (grid.get(grid.size() - 1).charAt(grid.get(grid.size() - 1).length() - 2) == 'O' ||
+                        grid.get(grid.size() - 2).charAt(grid.get(grid.size() - 2).length() - 1) == 'O') {
+                    sb.append('.');
+                } else {
+                    sb.append('O');
+                }
+
+            }
+            String newRow = sb.toString();
+            newGrid.add(newRow);
         }
         return newGrid;
     }
@@ -84,7 +114,7 @@ public class theBombermanGame {
 
         List<String> grid = new ArrayList<>(Arrays.asList(".......", "...O...", "....O..", ".......", "OO.....", "OO....."));
 
-        System.out.println(BombermanResult.bomberMan(4, grid));
+        System.out.println(BombermanResult.bomberMan(3, grid));
 
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
