@@ -42,8 +42,8 @@ class BombermanResult {
         List<String> stringGrid = new ArrayList<>();
 
         if (n % 2 == 0) {
-            for (int i = 0; i < grid.size(); i++) {
-                String newRow = grid.get(i).replaceAll("\\.", "O");
+            for (String s : grid) {
+                String newRow = s.replaceAll("\\.", "O");
                 stringGrid.add(newRow);
             }
             return stringGrid;
@@ -57,98 +57,25 @@ class BombermanResult {
     public static List<String> explode(List<String> grid) {
         List<String> newGrid = new ArrayList<>();
 
-        List<List<Character>> arrayList = new ArrayList<>();
-        for (int i = 0; i < grid.size(); i++) {
-            List<Character> charArray = new ArrayList<>();
-            for (int j = 0; j < grid.get(i).length(); j++) {
-                charArray.add(grid.get(i).charAt(j));
-            }
-            arrayList.add(charArray);
-        }
-        System.out.println(arrayList);
-
-
-        for (int i = 0; i < arrayList.size(); i++) {
-            StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < arrayList.get(i).size(); j++) {
-
-                if (!(arrayList.get(i - 1) == null) &&
-                        !(arrayList.get(i + 1) == null) &&
-                        !(arrayList.get(j - 1) == null) &&
-                        !(arrayList.get(j + 1) == null)) {
-                    if (arrayList.get(i).get(j) == 'O' ||
-                            arrayList.get(i - 1).get(j) == 'O' ||
-                            arrayList.get(i + 1).get(j) == 'O' ||
-                            arrayList.get(i).get(j - 1) == 'O' ||
-                            arrayList.get(i).get(j + 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
-                } else if (!(arrayList.get(i - 1) == null) &&
-                        !(arrayList.get(i + 1) == null) &&
-                        !(arrayList.get(i).get(j + 1) == null)) {
-                    if (arrayList.get(i).get(j) == 'O' ||
-                            arrayList.get(i - 1).get(j) == 'O' ||
-                            arrayList.get(i + 1).get(j) == 'O' ||
-                            arrayList.get(i).get(j + 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
-                } else if (!(arrayList.get(i - 1) == null) &&
-                        !(arrayList.get(i + 1) == null) &&
-                        !(arrayList.get(j - 1) == null)) {
-                    if (arrayList.get(i).get(j) == 'O' ||
-                            arrayList.get(i - 1).get(j) == 'O' ||
-                            arrayList.get(i + 1).get(j) == 'O' ||
-                            arrayList.get(i).get(j - 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
-                } else if (!(arrayList.get(i + 1) == null) &&
-                        !(arrayList.get(j + 1) == null)) {
-                    if (arrayList.get(i).get(j) == 'O' ||
-                            arrayList.get(i + 1).get(j) == 'O' ||
-                            arrayList.get(i).get(j + 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
-                } else if (!(arrayList.get(i - 1) == null) &&
-                        !(arrayList.get(j + 1) == null)) {
-                    if (arrayList.get(i).get(j) == 'O' ||
-                            arrayList.get(i - 1).get(j) == 'O' ||
-                            arrayList.get(i).get(j + 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
-                } else if (!(arrayList.get(i + 1) == null) &&
-                        !(arrayList.get(j - 1) == null)) {
-                    if (arrayList.get(i).get(j) == 'O' ||
-                            arrayList.get(i + 1).get(j) == 'O' ||
-                            arrayList.get(i).get(j - 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
-                } else if (!(arrayList.get(i - 1) == null) &&
-                        !(arrayList.get(j - 1) == null)) {
-                    if (arrayList.get(i).get(j) == 'O' ||
-                            arrayList.get(i - 1).get(j) == 'O' ||
-                            arrayList.get(i).get(j - 1) == 'O') {
+        try {
+            for (int i = 1; i < grid.size() - 1; i++) {
+                StringBuilder sb = new StringBuilder();
+                for (int j = 1; j < grid.get(i).length() - 1; j++) {
+                    if (grid.get(i).charAt(j) == 'O' ||
+                            grid.get(i - 1).charAt(j) == 'O' ||
+                            grid.get(i + 1).charAt(j) == 'O' ||
+                            grid.get(i).charAt(j - 1) == 'O' ||
+                            grid.get(i).charAt(j + 1) == 'O') {
                         sb.append('.');
                     } else {
                         sb.append('O');
                     }
                 }
-
-
+                String newRow = sb.toString();
+                newGrid.add(newRow);
             }
-            String newRow = sb.toString();
-            newGrid.add(newRow);
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
         return newGrid;
     }
