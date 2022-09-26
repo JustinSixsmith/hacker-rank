@@ -65,20 +65,87 @@ class BombermanResult {
             }
             arrayList.add(charArray);
         }
+        System.out.println(arrayList);
 
 
-        for (int i = 1; i < arrayList.size() - 1; i++) {
+        for (int i = 0; i < arrayList.size(); i++) {
             StringBuilder sb = new StringBuilder();
-            for (int j = 1; j < arrayList.get(i).get(j) - 1; j++) {
-                if (grid.get(i).charAt(j) == 'O' ||
-                        grid.get(i - 1).charAt(j) == 'O' ||
-                        grid.get(i + 1).charAt(j) == 'O' ||
-                        grid.get(i).charAt(j - 1) == 'O' ||
-                        grid.get(i).charAt(j + 1) == 'O') {
-                    sb.append('.');
-                } else {
-                    sb.append('O');
+            for (int j = 0; j < arrayList.get(i).size(); j++) {
+
+                if (!(arrayList.get(i - 1) == null) &&
+                        !(arrayList.get(i + 1) == null) &&
+                        !(arrayList.get(j - 1) == null) &&
+                        !(arrayList.get(j + 1) == null)) {
+                    if (arrayList.get(i).get(j) == 'O' ||
+                            arrayList.get(i - 1).get(j) == 'O' ||
+                            arrayList.get(i + 1).get(j) == 'O' ||
+                            arrayList.get(i).get(j - 1) == 'O' ||
+                            arrayList.get(i).get(j + 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
+                } else if (!(arrayList.get(i - 1) == null) &&
+                        !(arrayList.get(i + 1) == null) &&
+                        !(arrayList.get(i).get(j + 1) == null)) {
+                    if (arrayList.get(i).get(j) == 'O' ||
+                            arrayList.get(i - 1).get(j) == 'O' ||
+                            arrayList.get(i + 1).get(j) == 'O' ||
+                            arrayList.get(i).get(j + 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
+                } else if (!(arrayList.get(i - 1) == null) &&
+                        !(arrayList.get(i + 1) == null) &&
+                        !(arrayList.get(j - 1) == null)) {
+                    if (arrayList.get(i).get(j) == 'O' ||
+                            arrayList.get(i - 1).get(j) == 'O' ||
+                            arrayList.get(i + 1).get(j) == 'O' ||
+                            arrayList.get(i).get(j - 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
+                } else if (!(arrayList.get(i + 1) == null) &&
+                        !(arrayList.get(j + 1) == null)) {
+                    if (arrayList.get(i).get(j) == 'O' ||
+                            arrayList.get(i + 1).get(j) == 'O' ||
+                            arrayList.get(i).get(j + 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
+                } else if (!(arrayList.get(i - 1) == null) &&
+                        !(arrayList.get(j + 1) == null)) {
+                    if (arrayList.get(i).get(j) == 'O' ||
+                            arrayList.get(i - 1).get(j) == 'O' ||
+                            arrayList.get(i).get(j + 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
+                } else if (!(arrayList.get(i + 1) == null) &&
+                        !(arrayList.get(j - 1) == null)) {
+                    if (arrayList.get(i).get(j) == 'O' ||
+                            arrayList.get(i + 1).get(j) == 'O' ||
+                            arrayList.get(i).get(j - 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
+                } else if (!(arrayList.get(i - 1) == null) &&
+                        !(arrayList.get(j - 1) == null)) {
+                    if (arrayList.get(i).get(j) == 'O' ||
+                            arrayList.get(i - 1).get(j) == 'O' ||
+                            arrayList.get(i).get(j - 1) == 'O') {
+                        sb.append('.');
+                    } else {
+                        sb.append('O');
+                    }
                 }
+
+
             }
             String newRow = sb.toString();
             newGrid.add(newRow);
