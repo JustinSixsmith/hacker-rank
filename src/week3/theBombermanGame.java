@@ -57,25 +57,19 @@ class BombermanResult {
     public static List<String> explode(List<String> grid) {
         List<String> newGrid = new ArrayList<>();
 
-        for (int i = 1; i < grid.size() - 1; i++) {
+        List<List<Character>> arrayList = new ArrayList<>();
+        for (int i = 0; i < grid.size(); i++) {
+            List<Character> charArray = new ArrayList<>();
+            for (int j = 0; j < grid.get(i).length(); j++) {
+                charArray.add(grid.get(i).charAt(j));
+            }
+            arrayList.add(charArray);
+        }
+
+
+        for (int i = 1; i < arrayList.size() - 1; i++) {
             StringBuilder sb = new StringBuilder();
-
-            if (grid.get(0).charAt(1) == 'O' ||
-                    grid.get(1).charAt(0) == 'O') {
-                sb.append('.');
-            } else {
-                sb.append('O');
-            }
-
-            if (grid.get(0).charAt(grid.get(0).length() - 2) == 'O' ||
-                    grid.get(1).charAt(grid.get(1).length() - 1) == 'O') {
-                sb.append('.');
-            } else {
-                sb.append('O');
-            }
-
-            for (int j = 1; j < grid.get(0).length() - 1; j++) {
-
+            for (int j = 1; j < arrayList.get(i).get(j) - 1; j++) {
                 if (grid.get(i).charAt(j) == 'O' ||
                         grid.get(i - 1).charAt(j) == 'O' ||
                         grid.get(i + 1).charAt(j) == 'O' ||
@@ -85,21 +79,6 @@ class BombermanResult {
                 } else {
                     sb.append('O');
                 }
-
-                if (grid.get(grid.size() - 1).charAt(1) == 'O' ||
-                        grid.get(grid.size() - 2).charAt(0) == 'O') {
-                    sb.append('.');
-                } else {
-                    sb.append('O');
-                }
-
-                if (grid.get(grid.size() - 1).charAt(grid.get(grid.size() - 1).length() - 2) == 'O' ||
-                        grid.get(grid.size() - 2).charAt(grid.get(grid.size() - 2).length() - 1) == 'O') {
-                    sb.append('.');
-                } else {
-                    sb.append('O');
-                }
-
             }
             String newRow = sb.toString();
             newGrid.add(newRow);
