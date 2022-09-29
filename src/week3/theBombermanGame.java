@@ -55,27 +55,24 @@ class BombermanResult {
     }
 
     public static List<String> explode(List<String> grid) {
+
         List<String> newGrid = new ArrayList<>();
 
-        try {
-            for (int i = 1; i < grid.size() - 1; i++) {
-                StringBuilder sb = new StringBuilder();
-                for (int j = 1; j < grid.get(i).length() - 1; j++) {
-                    if (grid.get(i).charAt(j) == 'O' ||
-                            grid.get(i - 1).charAt(j) == 'O' ||
-                            grid.get(i + 1).charAt(j) == 'O' ||
-                            grid.get(i).charAt(j - 1) == 'O' ||
-                            grid.get(i).charAt(j + 1) == 'O') {
-                        sb.append('.');
-                    } else {
-                        sb.append('O');
-                    }
+        for (int i = 0; i < grid.size(); i++) {
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < grid.get(i).length(); j++) {
+                if (grid.get(i).charAt(j) == 'O' ||
+                        grid.get(i - 1).charAt(j) == 'O' ||
+                        grid.get(i + 1).charAt(j) == 'O' ||
+                        grid.get(i).charAt(j - 1) == 'O' ||
+                        grid.get(i).charAt(j + 1) == 'O') {
+                    sb.append('.');
+                } else {
+                    sb.append('O');
                 }
-                String newRow = sb.toString();
-                newGrid.add(newRow);
             }
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+            String newRow = sb.toString();
+            newGrid.add(newRow);
         }
         return newGrid;
     }
