@@ -27,17 +27,15 @@ class NewYearResult {
 
         //Loop through list and compare value to its index + 1
         for (int i = 0; i < q.size(); i++) {
-
-            if (q.get(i) < (i + 1) + 2) {
+            if (q.get(i) > (i + 1) + 2) {
+                System.out.println("Too chaotic");
+                return;
+            } else if (q.get(i) > (i + 1)) {
                 int bribes = q.get(i) - (i + 1);
                 totalBribes += bribes;
-
-            } else {
-                System.out.println("too chaotic");
-
             }
-            System.out.println(totalBribes);
         }
+        System.out.println(totalBribes);
     }
 
 }
@@ -48,8 +46,8 @@ public class NewYearsChaos {
         List<Integer> queue1 = new ArrayList<>(Arrays.asList(2, 1, 5, 3, 4));
         List<Integer> queue2 = new ArrayList<>(Arrays.asList(2, 5, 3, 1, 4));
 
-//        NewYearResult.minimumBribes(queue1);
-        NewYearResult.minimumBribes(queue2);
+        NewYearResult.minimumBribes(queue1);
+//        NewYearResult.minimumBribes(queue2);
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 //
