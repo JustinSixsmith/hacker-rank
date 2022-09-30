@@ -23,19 +23,35 @@ class NewYearResult {
 
     public static void minimumBribes(List<Integer> q) {
         // Write your code here
-        int totalBribes = 0;
+//        int totalBribes = 0;
+////
+////        //Loop through list and compare value to its index + 1
+////        for (int i = 0; i < q.size(); i++) {
+////            if (q.get(i) > (i + 1) + 2) {
+////                System.out.println("Too chaotic");
+////                return;
+////            } else if (q.get(i) > (i + 1)) {
+////                int bribes = q.get(i) - (i + 1);
+////                totalBribes += bribes;
+////            }
+////        }
+////        System.out.println(totalBribes);
 
-        //Loop through list and compare value to its index + 1
+        int bribes = 0;
+
         for (int i = 0; i < q.size(); i++) {
-            if (q.get(i) > (i + 1) + 2) {
+            if (q.get(i) - i - 1 > 2) {
                 System.out.println("Too chaotic");
                 return;
-            } else if (q.get(i) > (i + 1)) {
-                int bribes = q.get(i) - (i + 1);
-                totalBribes += bribes;
+            }
+
+            for (int j = q.get(i) - 1; j < i; j++) {
+                if (q.get(j) > q.get(i)) {
+                    bribes++;
+                }
             }
         }
-        System.out.println(totalBribes);
+        System.out.println(bribes);
     }
 
 }
