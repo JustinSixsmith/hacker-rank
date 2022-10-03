@@ -23,25 +23,39 @@ class SherlockResult {
 
     public static String isValid(String s) {
         // Write your code here
+        Map<Character, Integer> stringChars = new HashMap();
 
+        // Look at each character in a string
+        for (int i = 0; i < s.length(); i++) {
+            if (!stringChars.containsKey(s.charAt(i))) {
+                stringChars.put(s.charAt(i), 1);
+            } else {
+                stringChars.put(s.charAt(i), stringChars.get(s.charAt(i)) + 1);
+            }
+        }
+        System.out.println(stringChars);
+        return "Yes";
     }
 
 }
 
 public class SherlockString {
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        String s = bufferedReader.readLine();
+        System.out.println(SherlockResult.isValid("aabbccd"));
 
-        String result = SherlockResult.isValid(s);
-
-        bufferedWriter.write(result);
-        bufferedWriter.newLine();
-
-        bufferedReader.close();
-        bufferedWriter.close();
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+//
+//        String s = bufferedReader.readLine();
+//
+//        String result = SherlockResult.isValid(s);
+//
+//        bufferedWriter.write(result);
+//        bufferedWriter.newLine();
+//
+//        bufferedReader.close();
+//        bufferedWriter.close();
     }
 }
 
