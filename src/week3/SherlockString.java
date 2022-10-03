@@ -9,8 +9,8 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.regex.*;
 import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
+
+import static java.util.stream.Collectors.*;
 
 class SherlockResult {
 
@@ -33,8 +33,21 @@ class SherlockResult {
                 stringChars.put(s.charAt(i), stringChars.get(s.charAt(i)) + 1);
             }
         }
-        System.out.println(stringChars);
-        return "Yes";
+
+        List<Integer> values = new ArrayList<>(stringChars.values());
+//        values.remove(Collections.max(values));
+        int max = Collections.max(values);
+        int min = Collections.min(values);
+        if (max > min) {
+            if (min == 1) {
+                values.remove(min);
+            }
+            max -= 1;
+            if (max == min) {
+                return "YES";
+            }
+        }
+        return "NO";
     }
 
 }
@@ -42,7 +55,7 @@ class SherlockResult {
 public class SherlockString {
     public static void main(String[] args) throws IOException {
 
-        System.out.println(SherlockResult.isValid("aabbccd"));
+        System.out.println(SherlockResult.isValid("aabbccc"));
 
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 //        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
