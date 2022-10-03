@@ -40,7 +40,7 @@ class SherlockResult {
         int min = Collections.min(values);
         if (max > min) {
             if (min == 1) {
-                values.remove(min);
+                min -= 1;
             }
             max -= 1;
             if (max == min) {
