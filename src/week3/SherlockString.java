@@ -25,6 +25,10 @@ class SherlockResult {
         // Write your code here
         Map<Character, Integer> stringChars = new HashMap();
 
+        if (s.length() == 1) {
+            return "YES";
+        }
+
         // Look at each character in a string
         for (int i = 0; i < s.length(); i++) {
             if (!stringChars.containsKey(s.charAt(i))) {
