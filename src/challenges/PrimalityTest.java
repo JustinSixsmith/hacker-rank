@@ -19,24 +19,31 @@ public class PrimalityTest {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         String n = bufferedReader.readLine();
+        BigInteger bi = new BigInteger(n);
+        boolean isPrime = bi.isProbablePrime(1);
 
-        bufferedReader.close();
-        System.out.println(isProbablePrime(Integer.parseInt(n)));
-    }
-
-    public static String isProbablePrime(int n) {
-
-        boolean isPrime = n > 1;
-
-        for (int i = 2; i <= n / 2; i++) {
-            if (n % i == 0) {
-                isPrime = false;
-                break;
-            }
+        if (isPrime) {
+            System.out.println("prime");
+        } else {
+            System.out.println("not prime");
         }
-        if (isPrime){
-            return "prime";
-        }
-        return "not prime";
+
+//        System.out.println(isProbablePrime(Integer.parseInt(n)));
+//    }
+//
+//    public static String isProbablePrime(int n) {
+//
+//        boolean isPrime = n > 1;
+//
+//        for (int i = 2; i <= n / 2; i++) {
+//            if (n % i == 0) {
+//                isPrime = false;
+//                break;
+//            }
+//        }
+//        if (isPrime){
+//            return "prime";
+//        }
+//        return "not prime";
     }
 }
