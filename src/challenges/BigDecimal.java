@@ -5,20 +5,19 @@ import java.util.*;
 class Solution{
     public static void main(String []args){
         //Input
-        Scanner sc= new Scanner(System.in);
-        int n=sc.nextInt();
-        String []s=new String[n+2];
-        for(int i=0;i<n;i++){
-            s[i]=sc.next();
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        String[] s = new String[n];
+        for (int i = 0; i < n; i++) {
+            s[i] = scanner.next();
         }
-        sc.close();
+        scanner.close();
 
         //Write your code here
+        Arrays.sort(s, Collections.reverseOrder(Comparator.comparing(BigDecimal::new)));
 
-
-        //Output
-        for(int i=0;i<n;i++)
-        {
+        // Output
+        for (int i = 0; i < n; i++) {
             System.out.println(s[i]);
         }
     }
