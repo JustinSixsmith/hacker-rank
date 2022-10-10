@@ -30,8 +30,4 @@ class JavaMap {
         }
     }
 
-//    public static void printContact (String s) {
-//
-//    }
-
 }
