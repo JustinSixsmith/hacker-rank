@@ -2,7 +2,7 @@ package javaPrep;
 
 import java.util.*;
 
-public class Arraylist {
+public class Arraylist<I extends Number> {
 
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
@@ -22,13 +22,11 @@ public class Arraylist {
             }
             numArrays.add(numArray);
         }
-        System.out.println(numArrays);
 
-        int queries = sc.nextInt();
-        for (int i = 0; i < queries; i++) {
+        int numQueries = sc.nextInt();
+        for (int i = 0; i < numQueries; i++) {
             int x = sc.nextInt();
             int y = sc.nextInt();
-            System.out.println(i);
             findNum(numArrays, x, y);
         }
         sc.close();
