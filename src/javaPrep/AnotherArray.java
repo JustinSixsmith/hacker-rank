@@ -8,26 +8,23 @@ public class AnotherArray {
         // Return true if you can win the game; otherwise, return false.
 //        System.out.println(Arrays.toString(Arrays.stream(game).toArray()));
         boolean win = true;
-        int pos = 0;
-        while (pos < game.length) {
-            if (game[0] != 0) {
-                win = false;
-                break;
-            }
-            if (pos + leap < game.length) {
-                // Leap over things
-                if (game[pos + leap] == 0) {
-                    pos = pos + leap;
-                } else {
-                    win = false;
+        for (int i = 0; i < game.length; i++) {
+            if (game[i] != 0) {
+                if (i + leap > game.length) {
                     break;
                 }
+                leap = i + leap;
+                int flag = 0;
+                for (int j = i; j <= leap; j++) {
+                    if (game[j] == 0) {
+                        i = j;
+                        flag++;
+                    }
+                    if (flag == 0) {
+                        win = false;
+                    }
+                }
             }
-            // Check if able to leap to end
-            if (pos + leap >= game.length) {
-                break;
-            }
-            pos++;
         }
         return win;
     }
