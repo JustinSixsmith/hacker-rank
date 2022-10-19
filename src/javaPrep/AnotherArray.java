@@ -16,11 +16,10 @@ public class AnotherArray {
                 if (game[i + leap] == 0)
                     pos = game[i + leap];
             }
-        }
-
-        // Check if able to leap to end
-        if (pos == game.length || pos + leap >= game.length) {
-            win = true;
+            // Check if able to leap to end
+            if (pos == game.length || pos + leap >= game.length) {
+                win = true;
+            }
         }
         return win;
     }
