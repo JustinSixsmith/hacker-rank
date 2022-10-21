@@ -6,7 +6,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Solution {
+public class HashSet {
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -20,6 +20,10 @@ public class Solution {
         }
 
 //Write your code here
-
+        Set<String> set = new LinkedHashSet<>();
+        for (int i = 0; i < t; i++) {
+            set.add(String.format("%s %s", pair_left[i], pair_right[i]));
+            System.out.println(set.size());
+        }
     }
 }
