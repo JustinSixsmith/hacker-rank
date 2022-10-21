@@ -16,15 +16,16 @@ public class List {
 
         int queries = sc.nextInt();
         while (queries > 0) {
+            sc.nextLine();
             String query = sc.nextLine();
 
             if (query.equals("Insert")) {
                 int index = sc.nextInt();
                 int value = sc.nextInt();
-                if (index > list.size()) {
-                    list.add(value);
-                } else {
+                if (index < list.size()) {
                     list.set(index, value);
+                } else {
+                    list.add(value);
                 }
             }
 
@@ -32,10 +33,15 @@ public class List {
                 int index = sc.nextInt();
                 list.remove(index);
             }
-
             queries--;
         }
         sc.close();
-        System.out.println(list);
+        StringBuilder result = new StringBuilder();
+        result.append(list.get(0));
+        for (int i = 1; i < list.size(); i++) {
+            result.append(" ").append(list.get(i));
+        }
+        String stringResult = result.toString();
+        System.out.println(stringResult);
     }
 }
