@@ -15,33 +15,20 @@ public class List {
         }
 
         int queries = sc.nextInt();
-        while (queries > 0) {
-            sc.nextLine();
+        for (int i = 0; i <= queries; i++) {
             String query = sc.nextLine();
 
             if (query.equals("Insert")) {
-                int index = sc.nextInt();
-                int value = sc.nextInt();
-                if (index < list.size()) {
-                    list.set(index, value);
-                } else {
-                    list.add(value);
-                }
+                list.add(sc.nextInt(), sc.nextInt());
             }
 
             if (query.equals("Delete")) {
-                int index = sc.nextInt();
-                list.remove(index);
+                list.remove(sc.nextInt());
             }
-            queries--;
         }
-        sc.close();
-        StringBuilder result = new StringBuilder();
-        result.append(list.get(0));
-        for (int i = 1; i < list.size(); i++) {
-            result.append(" ").append(list.get(i));
+
+        for (Integer num : list) {
+            System.out.printf("%d ", num);
         }
-        String stringResult = result.toString();
-        System.out.println(stringResult);
     }
 }
