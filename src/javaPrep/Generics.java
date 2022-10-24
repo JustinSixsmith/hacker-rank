@@ -25,6 +25,11 @@ public class Generics {
     }
 
     public static void printArray(int[] numbers, String[] words) {
-
+        for (int number : numbers) {
+            System.out.println(number);
+        }
+        for (String word : words) {
+            System.out.println(word);
+        }
     }
 }
