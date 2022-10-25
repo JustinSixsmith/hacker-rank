@@ -4,31 +4,6 @@ import java.util.*;
 
 public class AnotherArray {
 
-    public static boolean canWin(int leap, int[] game) {
-        // Return true if you can win the game; otherwise, return false.
-//        System.out.println(Arrays.toString(Arrays.stream(game).toArray()));
-        boolean win = true;
-        for (int i = 0; i < game.length; i++) {
-            if (game[i] != 0) {
-                if (i + leap > game.length) {
-                    break;
-                }
-                leap = i + leap;
-                int flag = 0;
-                for (int j = i; j <= leap; j++) {
-                    if (game[j] == 0) {
-                        i = j;
-                        flag++;
-                    }
-                    if (flag == 0) {
-                        win = false;
-                    }
-                }
-            }
-        }
-        return win;
-    }
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int q = scan.nextInt();
@@ -41,8 +16,22 @@ public class AnotherArray {
                 game[i] = scan.nextInt();
             }
 
-            System.out.println((canWin(leap, game)) ? "YES" : "NO");
+            System.out.println((canWin(leap, game, 0)) ? "YES" : "NO");
         }
         scan.close();
+    }
+
+    public static boolean canWin(int leap, int[] game, int i) {
+        // Return true if you can win the game; otherwise, return false.
+//        System.out.println(Arrays.toString(Arrays.stream(game).toArray()));
+
+        if (i > game.length - 1) {
+            return true;
+        }
+        if (i < 0 || game[i] == 1) {
+            return false;
+        }
+        game[i] = 1;
+        return canWin(leap, game, i + leap) || canWin(leap, game, i + 1) || canWin(leap, game, i - 1);
     }
 }
