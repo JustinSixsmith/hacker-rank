@@ -3,6 +3,16 @@ package javaPrep;
 import java.util.*;
 
 // Write your Checker class here
+class Checker implements Comparator<Player>{
+    @Override
+    public int compare(Player a, Player b){
+        if(b.score == a.score){
+            return a.name.compareTo(b.name);
+        } else if (b.score > a.score){
+            return 1;
+        } else return -1;
+    }
+}
 
 class Player{
     String name;
@@ -14,7 +24,7 @@ class Player{
     }
 }
 
-class Comparator {
+abstract class Comparator {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -33,4 +43,6 @@ class Comparator {
             System.out.printf("%s %s\n", player[i].name, player[i].score);
         }
     }
+
+    public abstract int compare(Player a, Player b);
 }
