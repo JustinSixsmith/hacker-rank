@@ -1,17 +1,20 @@
 package javaPrep;
 
-import java.io.*;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class BitSet {
+public class JavaBitSet {
 
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        BitSet bitSet = new BitSet(){new BitSet(n), new BitSet(n);
+        final var firstLine = Stream.of(sc.nextLine().split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        final var n = firstLine[0];
+        final var m = firstLine[1];
+        final var bitsets = new BitSet[]{new BitSet(n), new BitSet(n)};
+
 
 
         sc.close();
