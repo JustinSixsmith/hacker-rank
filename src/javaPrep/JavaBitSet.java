@@ -6,9 +6,17 @@ import java.util.stream.Stream;
 
 public class JavaBitSet {
     enum Operation {
+        AND("ANd"),
         OR("OR"),
         XOR("XOR"),
-        AND
+        FLIP("FLIP"),
+        SET("SET");
+
+        final String name;
+
+        Operation(String name) {
+            this.name = name;
+        }
     }
 
     public static void main(String[] args) {
@@ -26,7 +34,13 @@ public class JavaBitSet {
                     String[] input = sc.nextLine().split(" ");
                     int i1 = Integer.parseInt(input[1]) - 1;
                     int i2 = Integer.parseInt(input[2]);
-                    case ()
+                    switch (Operation.valueOf(input[0])) {
+                        case AND: bitsets[i1].and(bitsets[i2 - 1]);
+                        case OR: bitsets[i1].or(bitsets[i2 - 1]);
+                        case XOR: bitsets[i1].xor(bitsets[i2 - 1]);
+                        case FLIP: bitsets[i1].flip(i2);
+                        case SET: bitsets[i1].set(i2);
+                    }
                 });
 
 
