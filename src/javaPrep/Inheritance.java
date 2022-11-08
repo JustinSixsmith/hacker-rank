@@ -18,6 +18,9 @@ class Bird extends Animal
     {
         System.out.println("I am flying");
     }
+    void sing() {
+        System.out.println("I am singing");
+    }
 }
 
 public class Inheritance{
