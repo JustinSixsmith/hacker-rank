@@ -6,53 +6,37 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class JavaBitSet {
-    enum Operation {
-        AND("ANd"),
-        OR("OR"),
-        XOR("XOR"),
-        FLIP("FLIP"),
-        SET("SET");
-
-        final String name;
-
-        Operation(String name) {
-            this.name = name;
-        }
-    }
-
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner sc = new Scanner(System.in);
-        int[] firstLine = Stream.of(sc.nextLine().split(" "))
-                .mapToInt(Integer::parseInt)
-                .toArray();
-        int n = firstLine[0];
-        int m = firstLine[1];
-        BitSet[] bitsets = new BitSet[]{new BitSet(n), new BitSet(n)};
 
-        String output = IntStream.range(0, m)
-                .mapToObj(i -> {
-                    String[] input = sc.nextLine().split(" ");
-                    int i1 = Integer.parseInt(input[1]) - 1;
-                    int i2 = Integer.parseInt(input[2]);
-                    switch (Operation.valueOf(input[0])) {
-                        case AND:
-                            bitsets[i1].and(bitsets[i2 - 1]);
-                        case OR:
-                            bitsets[i1].or(bitsets[i2 - 1]);
-                        case XOR:
-                            bitsets[i1].xor(bitsets[i2 - 1]);
-                        case FLIP:
-                            bitsets[i1].flip(i2);
-                        case SET:
-                            bitsets[i1].set(i2);
-                    }
-                    return String.format("%s %s", bitsets[0].cardinality(), bitsets[1].cardinality());
-                })
-                .collect(Collectors.joining("\n"));
+        Scanner get = new Scanner(System.in);
+        int n = get.nextInt();
+        int m = get.nextInt();
 
-        System.out.println(output);
-        sc.close();
+        BitSet b1 = new BitSet(n);
+        BitSet b2 = new BitSet(n);
+        BitSet[] bitset = new BitSet[3];
+
+        bitset[1] = b1;
+        bitset[2] = b2;
+
+        while (0 < m--) {
+            String operation_name = get.next();
+            int x = get.nextInt();
+            int y = get.nextInt();
+
+            if (operation_name.equals("AND")) {
+                bitset[x].and(bitset[y]);
+            } else if (operation_name.equals("OR")) {
+                bitset[x].or(bitset[y]);
+            } else if (operation_name.equals("FLIP")) {
+                bitset[x].flip(y);
+            } else if (operation_name.equals("SET")) {
+                bitset[x].set(y);
+            } else if (operation_name.equals("XOR")) {
+                bitset[x].xor(bitset[y]);
+            }
+            System.out.println(b1.cardinality() + " " + b2.cardinality());
+        }
     }
 }
 
