@@ -6,8 +6,8 @@ public class JavaIterator {
     static Iterator func(ArrayList mylist){
         Iterator it=mylist.iterator();
         while(it.hasNext()){
-            Object element = ~~~Complete this line~~~
-            if(~~~Complete this line~~~)//Hints: use instanceof operator
+            Object element = it.next();
+            if(element instanceof String)//Hints: use instanceof operator
 
             break;
         }
