@@ -1,7 +1,7 @@
 package javaPrep;
 
 import java.util.*;
-public class Main{
+public class JavaIterator {
 
     static Iterator func(ArrayList mylist){
         Iterator it=mylist.iterator();
