@@ -28,7 +28,7 @@ public class IntToString {
 }
 
 //The following class will prevent you from terminating the code using exit(0)!
-class DoNotTerminate {
+public class DoNotTerminate {
 
     public static class ExitTrappedException extends SecurityException {
 
