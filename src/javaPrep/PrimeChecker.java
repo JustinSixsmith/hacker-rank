@@ -9,24 +9,25 @@ public class PrimeChecker {
     static class Prime {
         public static void checkPrime(Integer num) {
             StringBuilder result = new StringBuilder();
-            for (int i = 0; i < num; i++) {
+            for (int i = 1; i <= num; i++) {
                 BigInteger bi = new BigInteger(String.valueOf(i));
                 if (bi.isProbablePrime(1)) {
                     result.append(bi).append(" ");
                 }
+
+                System.out.println(result);
             }
-            BigInteger big = new BigInteger(String.valueOf(num));
-            if (big.isProbablePrime(1)) {
-                result.append(big);
-                System.out.println(result + "\n");
-            }
+            System.out.println(result + "\n");
         }
     }
 
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        PrimeChecker.Prime.checkPrime(num);
+        while (sc.hasNext()) {
+            int num = sc.nextInt();
+            Prime.checkPrime(num);
+        }
+        sc.close();
     }
 }
