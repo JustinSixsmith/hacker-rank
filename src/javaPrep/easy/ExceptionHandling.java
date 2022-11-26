@@ -8,8 +8,8 @@ public class ExceptionHandling {
     static void divide(int x, int y) {
         try {
             System.out.println(x / y);
-        } catch (InputMismatchException | ArithmeticException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getClass().getName());
         }
     }
 
