@@ -3,7 +3,7 @@ package javaPrep.easy;
 import java.lang.reflect.*;
 import java.util.*;
 
-class Student{
+class Student {
     private String name;
     private String id;
     private String email;
@@ -11,18 +11,23 @@ class Student{
     public String getName() {
         return name;
     }
+
     public String getId() {
         return id;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -30,22 +35,22 @@ class Student{
 
 class ReflectionAttributes {
 
-    public static void main(String[] args){
-        Class student = ~~Complete this line~~;
-        Method[] methods = ~~Complete this line~~;
+    public static void main(String[] args) {
+        Class student = Student.class;
+        Method[] methods = student.getDeclaredMethods();
 
         ArrayList<String> methodList = new ArrayList<>();
-        for(~~Complete this line~~){
-            methodList.add(~~Complete this line~~);
+        for (Method method : methods){
+            methodList.add(method.getName());
         }
         Collections.sort(methodList);
-        for(String name: methodList){
+        for (String name : methodList) {
             System.out.println(name);
         }
     }
 
 }
-v
+
 
 
 
