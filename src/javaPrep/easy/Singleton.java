@@ -7,7 +7,7 @@ class Singleton{
 
     public String str;
 
-    static Singleton getSingletonInstance() {
+    static Singleton getSingleInstance() {
         return new Singleton();
     }
 }
