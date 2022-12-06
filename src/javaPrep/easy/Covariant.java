@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 
 //Complete the classes below
 class Flower {
+    static void whatsYourName() {
+        System.out.println("I have many names and types.");
+    }
 }
 
 class Jasmine {
