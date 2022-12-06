@@ -18,7 +18,11 @@ class Jasmine extends Flower {
     }
 }
 
-class Lily {
+class Lily extends Flower {
+    @Override
+    public void whatsYourName() {
+        System.out.println("Lily");
+    }
 }
 
 class Region {
