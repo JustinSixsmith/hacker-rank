@@ -6,32 +6,43 @@ import java.io.InputStreamReader;
 
 //Complete the classes below
 class Flower {
-    public void whatsYourName() {
-        System.out.println("I have many names and types.");
+    public String whatsYourName() {
+        return "I have many names and types.";
     }
 }
 
 class Jasmine extends Flower {
     @Override
-    public void whatsYourName() {
-        System.out.println("Jasmine");
+    public String whatsYourName() {
+        return "Jasmine";
     }
 }
 
 class Lily extends Flower {
     @Override
-    public void whatsYourName() {
-        System.out.println("Lily");
+    public String whatsYourName() {
+        return "Lily";
     }
 }
 
 class Region {
+    public Flower yourNationalFlower() {
+        return new Flower();
+    }
 }
 
-class WestBengal {
+class WestBengal extends Region {
+    @Override
+    public Flower yourNationalFlower() {
+        return new Jasmine();
+    }
 }
 
-class AndhraPradesh {
+class AndhraPradesh extends Region {
+    @Override
+    public Flower yourNationalFlower() {
+        return new Lily();
+    }
 }
 
 
