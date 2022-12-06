@@ -59,6 +59,7 @@ public class Covariant {
                 region = new AndhraPradesh();
                 break;
         }
+        assert region != null;
         Flower flower = region.yourNationalFlower();
         System.out.println(flower.whatsYourName());
     }
