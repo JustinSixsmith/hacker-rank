@@ -16,6 +16,18 @@ public class ContentExtractor {
             String line = in.nextLine();
 
             //Write your code here
+            String tag = "<(.+)>([\\w]+[^<]*)</(\\1)>";
+            Pattern p = Pattern.compile(tag);
+            Matcher m = p.matcher(line);
+            int count = 0;
+
+            while (m.find()) {
+                System.out.println(m.group(2));
+                count++;
+            }
+            if (count == 0) {
+                System.out.println("None");
+            }
 
             testCases--;
         }
