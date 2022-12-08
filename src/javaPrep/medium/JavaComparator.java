@@ -1,4 +1,4 @@
-package javaPrep;
+package javaPrep.medium;
 
 import java.util.*;
 
