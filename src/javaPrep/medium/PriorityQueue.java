@@ -1,9 +1,6 @@
 package javaPrep.medium;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 /*
  * Create the Student and Priorities classes here.
  */
@@ -82,11 +79,24 @@ class Priorities {
         List<Student> students = new ArrayList<>();
         for (String st : events) {
             String[] stStud = st.split(" ");
-            String name = stStud[1];
-            double CGPA = Double.parseDouble(stStud[2]);
-            int id = Integer.parseInt(stStud[3]);
-            Student tempStu = new Student(name, CGPA, id);
-            students.add(tempStu);
+            if (stStud[0].equals("ENTER")) {
+                String name = stStud[1];
+                double CGPA = Double.parseDouble(stStud[2]);
+                int id = Integer.parseInt(stStud[3]);
+                Student tempStu = new Student(name, CGPA, id);
+                students.add(tempStu);
+            } else {
+                students.sort(Comparator.comparingDouble(Student::getCGPA));
+                double bigGPA = students.get(students.size() - 1).getCGPA();
+                List<Student> smartKids = new ArrayList<>();
+                for (Student kid : students) {
+                    if (kid.getCGPA() == bigGPA)
+                    smartKids.add(kid);
+                }
+                smartKids.sort(Comparator.comparingInt(Student::getId));
+                Student priorityKid = smartKids.get(0);
+                students.remove(priorityKid);
+            }
         }
         return students;
     }
@@ -110,7 +120,7 @@ public class PriorityQueue {
         if (students.isEmpty()) {
             System.out.println("EMPTY");
         } else {
-            for (Student st: students) {
+            for (Student st : students) {
                 System.out.println(st.getName());
             }
         }
