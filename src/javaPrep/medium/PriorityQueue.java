@@ -91,13 +91,14 @@ class Priorities {
                 List<Student> smartKids = new ArrayList<>();
                 for (Student kid : students) {
                     if (kid.getCGPA() == bigGPA)
-                    smartKids.add(kid);
+                        smartKids.add(kid);
                 }
                 smartKids.sort(Comparator.comparingInt(Student::getId));
                 Student priorityKid = smartKids.get(0);
                 students.remove(priorityKid);
             }
         }
+        Collections.reverse(students);
         return students;
     }
 }
