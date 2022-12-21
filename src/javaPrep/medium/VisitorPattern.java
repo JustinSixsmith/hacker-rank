@@ -1,14 +1,6 @@
 package javaPrep.medium;
 
 import java.util.ArrayList;
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
-import java.util.ArrayList;
-import java.util.Scanner;
 
 enum Color {
     RED, GREEN
@@ -82,9 +74,10 @@ abstract class TreeVis
 }
 
 class SumInLeavesVisitor extends TreeVis {
+    private int leafSum = 0;
     public int getResult() {
         //implement this
-        return 0;
+        return leafSum;
     }
 
     public void visitNode(TreeNode node) {
@@ -93,13 +86,15 @@ class SumInLeavesVisitor extends TreeVis {
 
     public void visitLeaf(TreeLeaf leaf) {
         //implement this
+        leafSum += leaf.getValue();
     }
 }
 
 class ProductOfRedNodesVisitor extends TreeVis {
+    private int redNodes = 1;
     public int getResult() {
         //implement this
-        return 1;
+        return redNodes;
     }
 
     public void visitNode(TreeNode node) {
