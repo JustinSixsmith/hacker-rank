@@ -2,21 +2,35 @@
 
 // A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
 
+// function isSubsequence(s, t) {
+//   let count = 0;
+//   // Look at chars in s and find them in sequence in t
+//   for (const char of s) {
+//     const charS = char;
+//     for (const char of t) {
+//       const charT = char;
+//       // Count the matches and compare with s length
+//       if (charS === charT) count++;
+//     }
+//   }
+
+//   return count === s.length;
+// }
+
 function isSubsequence(s, t) {
-  let count = 0;
-  // Look at chars in s and find them in sequence in t
-  for (let i = 0; i < s.length; i++) {
-    const charS = s[i];
-    for (let j = 0; j < t.length; j++) {
-      const charT = t[j];
-      // Count the matches and compare with s length
-      if (charS === charT) count++;
+  let sIndex = 0;
+  let tIndex = 0;
+
+  // Match char from s to char in t
+  while (sIndex < s.length && tIndex < t.length) {
+    if (s[sIndex] === t[tIndex]) {
+      // Once found, advance index in s
+      sIndex++;
     }
+    tIndex++;
   }
-  // If we don't make it all the way, return false
-  if (count !== s.length) return false;
-  // Default return true if checks pass
-  return true;
+  // If we make it to the end of s, it's true
+  return sIndex === s.length;
 }
 
 const s = "abc";
