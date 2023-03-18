@@ -9,22 +9,23 @@
 // }
 
 function canConstruct(ransomNote, magazine) {
-  // Put letters from magazine into a map with the letters as keys and the number of times they appear as values
-  const letters = {};
-  for (let i = 0; i < magazine.length; i++) {
-    letters[magazine[i]] = (letters[magazine[i]] || 0) + 1;
+  // Create a Map to store the frequency of each character in magazine
+  const charFrequency = new Map();
+  for (const char of magazine) {
+    charFrequency.set(char, (charFrequency.get(char) || 0) + 1);
   }
-  console.log(letters);
 
-  // Iterate through the ransom note and check if the letter is present in the magazine
-  for (let i = 0; i < ransomNote.length; i++) {
-    if (letters[ransomNote[i]] === undefined || letters[ransomNote[i]] === 0) {
+  // Iterate through the ransomNote string
+  for (const char of ransomNote) {
+    // If the character is not present in the Map or has a frequency of zero, return false
+    if (!charFrequency.has(char) || charFrequency.get(char) === 0) {
       return false;
     }
-    letters[ransomNote[i]] -= 1;
+    // Decrement the frequency of the character in the Map
+    charFrequency.set(char, charFrequency.get(char) - 1);
   }
 
-  // Return true if the ransom note can be constructed from the magazine
+  // If all characters in ransomNote have been found in magazine, return true
   return true;
 }
 
