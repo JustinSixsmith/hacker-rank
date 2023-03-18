@@ -5,7 +5,7 @@ function numberOfSteps(num) {
       num /= 2;
       count++;
     } else {
-      num -= 1;
+      num--;
       count++;
     }
   }
