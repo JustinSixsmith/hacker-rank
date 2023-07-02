@@ -1,9 +1,9 @@
 package interviewPrep.easy;
 
-public class CountingValleys {
+public class Valleys {
     public static int countValleys(int steps, String path) {
-        var elevation = 0;
-        var count = 0;
+        int elevation = 0;
+        int count = 0;
         var arr = path.toCharArray();
         for (int i = 0; i < steps; i++) {
             var step = arr[i];
