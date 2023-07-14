@@ -113,17 +113,20 @@ public class ArrayUtils {
             int b = query.get(1);
             int k = query.get(2);
 
-            for (int i = a - 1; i < b; i++) {
-                operations[i] += k;
-            }
+            operations[a - 1] += k;
+            if (b < operations.length)
+                operations[b] -= k;
         }
 
-        long largest = Long.MIN_VALUE;
+        long sum = 0;
+        long max = 0;
+
         for (int i = 0; i < operations.length; i++) {
-            largest = Math.max(largest, operations[i]);
+            sum += operations[i];
+            max = Math.max(max, sum);
         }
 
-        return largest;
+        return max;
     }
 }
 
