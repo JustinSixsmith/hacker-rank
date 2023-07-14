@@ -1,8 +1,11 @@
 package interviewPrep.easy;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        var result = StringUtils.makeAnagram("abcac", "acacb");
+        int[] arr = {3, 1, 2, 6, 5, 4, 7};
+        var result = ArrayUtils.minimumSwaps(arr);
         System.out.println(result);
     }
 }
