@@ -1,5 +1,6 @@
 package interviewPrep.easy;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,6 +102,28 @@ public class ArrayUtils {
             }
         }
         return swaps;
+    }
+
+    public static long arrayManipulation(int n, List<List<Integer>> queries) {
+        // Write your code here
+        int[] operations = new int[n];
+
+        for (var query : queries) {
+            int a = query.get(0);
+            int b = query.get(1);
+            int k = query.get(2);
+
+            for (int i = a - 1; i < b; i++) {
+                operations[i] += k;
+            }
+        }
+
+        long largest = Long.MIN_VALUE;
+        for (int i = 0; i < operations.length; i++) {
+            largest = Math.max(largest, operations[i]);
+        }
+
+        return largest;
     }
 }
 
