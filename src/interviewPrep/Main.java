@@ -1,6 +1,4 @@
-package interviewPrep.easy;
-
-import java.util.Arrays;
+package interviewPrep;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package interviewPrep.easy;
+package interviewPrep;
 
 import java.util.List;
 

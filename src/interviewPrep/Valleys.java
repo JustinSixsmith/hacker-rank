@@ -1,4 +1,4 @@
-package interviewPrep.easy;
+package interviewPrep;
 
 public class Valleys {
     public static int countValleys(int steps, String path) {
