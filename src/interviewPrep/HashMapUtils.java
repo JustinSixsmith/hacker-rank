@@ -63,4 +63,28 @@ public class HashMapUtils {
         return new String(chars);
     }
 
+
+    public static long countTriplets(List<Long> arr, long r) {
+        Map<Long, Long> potentialSecond = new HashMap<>();
+        Map<Long, Long> potentialThird = new HashMap<>();
+        long count = 0;
+
+        for (long num : arr) {
+            long next = num * r;
+
+            if (potentialThird.containsKey(num))
+                count += potentialThird.get(num);
+
+            if (potentialSecond.containsKey(num))
+                potentialThird.put(next, potentialThird.getOrDefault(next, 0L) + potentialSecond.get(num));
+
+            potentialSecond.put(next, potentialSecond.getOrDefault(next, 0L) + 1);
+        }
+
+        return count;
+    }
+
 }
+
+
+
