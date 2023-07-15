@@ -84,6 +84,43 @@ public class HashMapUtils {
         return count;
     }
 
+
+    public static List<Integer> freqQuery(List<List<Integer>> queries) {
+        Map<Integer, Integer> dataMap = new HashMap<>();
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+
+        for (List<Integer> query : queries) {
+            int operation = query.get(0);
+            int value = query.get(1);
+
+            if (operation == 1) {
+                int newFrequency = dataMap.getOrDefault(value, 0) + 1;
+                dataMap.put(value, newFrequency);
+                updateFreqMap(freqMap, newFrequency - 1, newFrequency);
+            } else if (operation == 2) {
+                int oldFrequency = dataMap.getOrDefault(value, 0);
+                if (oldFrequency > 0) {
+                    int newFrequency = oldFrequency - 1;
+                    dataMap.put(value, newFrequency);
+                    updateFreqMap(freqMap, oldFrequency, newFrequency);
+                }
+            } else if (operation == 3) {
+                result.add(freqMap.getOrDefault(value, 0) > 0 ? 1 : 0);
+            }
+        }
+
+        return result;
+    }
+
+    private static void updateFreqMap(Map<Integer, Integer> freqMap, int oldFrequency, int newFrequency) {
+        if (oldFrequency > 0)
+            freqMap.put(oldFrequency, freqMap.get(oldFrequency) - 1);
+
+        freqMap.put(newFrequency, freqMap.getOrDefault(newFrequency, 0) + 1);
+    }
+
+
 }
 
 
