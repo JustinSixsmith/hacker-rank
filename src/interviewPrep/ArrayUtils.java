@@ -128,5 +128,16 @@ public class ArrayUtils {
 
         return max;
     }
+
+    public static double getHitProbability(int R, int C, int[][] G) {
+        int cells = R * C;
+
+        int sum = 0;
+        for (int i = 0; i < R; i++)
+            for (int j = 0; j < C; j++)
+                sum += G[i][j];
+
+        return (double) sum / cells;
+    }
 }
 
