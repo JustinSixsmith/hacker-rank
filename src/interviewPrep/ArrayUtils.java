@@ -145,27 +145,26 @@ public class ArrayUtils {
         Arrays.sort(S);
 
         long newDiners = 0;
+        long spaceNeeded = K + 1;
 
         // Check seats to the left
         long leftSeats = S[0] - 1;
-        // Find seating for more
-        long spaceNeeded = K + 1;
         newDiners += leftSeats / spaceNeeded;
 
         // Check seats to the right
         long rightSeats = N - S[(int) (M - 1)];
-        long rightDiners = rightSeats / spaceNeeded;
-        newDiners += rightDiners;
+        newDiners += rightSeats / spaceNeeded;
 
         // Find open seating between existing diners
         long firstDiner = 2 * K + 1;
         for (int i = 0; i < M - 1; i++) {
             long seatsBetween = (S[i + 1] - S[i]) - 1;
-            if (seatsBetween >= firstDiner)
+            if (seatsBetween >= firstDiner) {
                 newDiners++;
-            seatsBetween -= firstDiner;
-            if (seatsBetween >= spaceNeeded)
-                newDiners += seatsBetween / spaceNeeded;
+                seatsBetween -= firstDiner;
+                if (seatsBetween >= spaceNeeded)
+                    newDiners += seatsBetween / spaceNeeded;
+            }
         }
 
         return newDiners;
