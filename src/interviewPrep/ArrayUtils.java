@@ -139,5 +139,29 @@ public class ArrayUtils {
 
         return (double) sum / cells;
     }
+
+
+    public static long maxAdditionalDiners(long N, long K, long M, long[] S) {
+        Arrays.sort(S);
+
+        long newDiners = 0;
+        long nextSeat = K + 1;
+
+        for (int i = 0; i < M; i++) {
+            long nextDiner = S[i];
+            while (nextSeat < N) {
+                if (nextSeat + K < nextDiner) {
+                    newDiners++;
+                    nextSeat += K + 1;
+                } else
+                    nextSeat = S[i + 1];
+            }
+        }
+
+        return newDiners;
+    }
+
+
 }
+
 
