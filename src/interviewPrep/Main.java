@@ -10,14 +10,14 @@ public class Main {
         long M = 2; // Number of existing diners
         long[] S = {2, 6}; // Seats of existing diners
         long result = ArrayUtils.maxAdditionalDiners(N, K, M, S);
-//        System.out.println(result);  // Output: 3
-//
-//        // Sample test case #2
-//        N = 15;
-//        K = 2;
-//        M = 3;
-//        S = new int[]{11, 6, 14};
-//        result = ArrayUtils.maxAdditionalDiners(N, K, M, S);
-////        System.out.println(result);  // Output: 1
+        System.out.println(result);  // Output: 3
+
+        // Sample test case #2
+        N = 15;
+        K = 2;
+        M = 3;
+        S = new long[]{11, 6, 14};
+        result = ArrayUtils.maxAdditionalDiners(N, K, M, S);
+        System.out.println(result);  // Output: 1
     }
 }
