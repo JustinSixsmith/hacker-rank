@@ -171,6 +171,46 @@ public class ArrayUtils {
     }
 
 
+    public static int getArtisticPhotographCount(int N, String C, int X, int Y) {
+        // Write your code here
+        int count = 0;
+
+        for (int actor = 1; actor < N - 1; actor++) {
+            if (C.charAt(actor) != 'A')
+                continue;
+
+
+            for (int photographer = actor - 1; photographer >= Math.max(0, actor - Y); photographer--) {
+                if (C.charAt(photographer) == 'P') {
+                    for (int backdrop = actor + 1; backdrop <= Math.min(N - 1, actor + Y); backdrop++) {
+                        if (C.charAt(backdrop) == 'B') {
+                            int photographerToActor = actor - photographer;
+                            int actorToBackdrop = backdrop - actor;
+
+                            if (photographerToActor >= X && photographerToActor <= Y &&
+                                    actorToBackdrop >= X && actorToBackdrop <= Y) {
+                                count++;
+                            }
+                        }
+                    }
+                } else if (C.charAt(photographer) == 'B') {
+                    for (int backdrop = actor + 1; backdrop <= Math.min(N - 1, actor + Y); backdrop++) {
+                        if (C.charAt(backdrop) == 'P') {
+                            int photographerToActor = actor - photographer;
+                            int actorToBackdrop = backdrop - actor;
+
+                            if (photographerToActor >= X && photographerToActor <= Y &&
+                                    actorToBackdrop >= X && actorToBackdrop <= Y) {
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
 }
 
 
