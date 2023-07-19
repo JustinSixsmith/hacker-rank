@@ -234,6 +234,22 @@ public class ArrayUtils {
         a.set(i, a.get(j));
         a.set(j, temp);
     }
+
+
+    public static int maximumToys(List<Integer> prices, int k) {
+        // Write your code here
+        Collections.sort(prices);
+        int toys = 0;
+
+        int toyIndex = 0;
+        while (k >= prices.get(toyIndex)) {
+            k -= prices.get(toyIndex);
+            toyIndex++;
+            toys++;
+        }
+
+        return toys;
+    }
 }
 
 
