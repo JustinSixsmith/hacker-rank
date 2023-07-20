@@ -1,8 +1,6 @@
 package interviewPrep;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class StringUtils {
     public static long repeatedString(String s, long n) {
@@ -51,6 +49,59 @@ public class StringUtils {
             deletions += Math.abs(freqA[i] - freqB[i]);
 
         return deletions;
+    }
+
+    public static int activityNotifications(List<Integer> expenditure, int d) {
+        int notices = 0;
+        int[] count = new int[201];
+
+        // Counting sort on the first d elements
+        for (int i = 0; i < d; i++) {
+            count[expenditure.get(i)]++;
+        }
+
+        for (int i = d; i < expenditure.size(); i++) {
+            double median = getMedian(count, d);
+
+            if (expenditure.get(i) >= 2 * median) {
+                notices++;
+            }
+
+            // Update the count for the current and previous elements
+            count[expenditure.get(i)]++;
+            count[expenditure.get(i - d)]--;
+        }
+
+        return notices;
+    }
+
+    private static double getMedian(int[] count, int d) {
+        int sum = 0;
+        int medianIndex1 = -1;
+        int medianIndex2 = -1;
+
+        if (d % 2 == 0) {
+            for (int i = 0; i < count.length; i++) {
+                sum += count[i];
+                if (medianIndex1 == -1 && sum >= d / 2) {
+                    medianIndex1 = i;
+                }
+                if (medianIndex2 == -1 && sum >= d / 2 + 1) {
+                    medianIndex2 = i;
+                    break;
+                }
+            }
+            return (medianIndex1 + medianIndex2) / 2.0;
+        } else {
+            for (int i = 0; i < count.length; i++) {
+                sum += count[i];
+                if (sum > d / 2) {
+                    return i;
+                }
+            }
+        }
+
+        return 0;
     }
 
 }
