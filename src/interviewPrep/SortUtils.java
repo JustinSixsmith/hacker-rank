@@ -1,5 +1,6 @@
 package interviewPrep;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -48,15 +49,43 @@ public class SortUtils {
     public static long countInversions(List<Integer> arr) {
         int count = 0;
         // Write your code here
-        for (int i = 0; i < arr.size() - 1; i++) {
-            for (int j = i + 1; j < arr.size(); j++) {
-                if (arr.get(i) > arr.get(j)) {
-                    swap(arr, i, j);
-                    count++;
-                }
-            }
+        // Split list into two arrays
+        var middle = arr.size() / 2;
+
+        List<Integer> left = new ArrayList<>();
+        List<Integer> right = new ArrayList<>();
+
+
+        for (int i = 0; i < middle; i++) {
+            left.add(arr.get(i));
         }
 
+        for (int i = middle; i < arr.size(); i++) {
+            right.add(arr.get(i));
+        }
+
+        countInversions(left);
+        countInversions(right);
+
+
         return count;
+    }
+
+    private void merge(List<Integer> left, List<Integer> right, List<Integer> result, int count) {
+        int i = 0, j = 0, k = 0;
+
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i) <= right.get(j))
+                result.set(k++, left.get(i++));
+
+            else
+                result.set(k++, right.get(j++));
+        }
+
+        while (i < left.size())
+            result.set(k++, left.get(i++));
+
+        while (j < right.size())
+            result.set(k++, right.get(j++));
     }
 }
