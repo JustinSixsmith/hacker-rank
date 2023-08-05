@@ -47,45 +47,29 @@ public class SortUtils {
     }
 
     public static long countInversions(List<Integer> arr) {
-        int count = 0;
         // Write your code here
-        // Split list into two arrays
-        var middle = arr.size() / 2;
 
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right = new ArrayList<>();
-
-
-        for (int i = 0; i < middle; i++) {
-            left.add(arr.get(i));
-        }
-
-        for (int i = middle; i < arr.size(); i++) {
-            right.add(arr.get(i));
-        }
-
-        countInversions(left);
-        countInversions(right);
-
-
-        return count;
+        countInversionsRec(arr, 0, arr.size() - 1);
     }
 
-    private void merge(List<Integer> left, List<Integer> right, List<Integer> result, int count) {
-        int i = 0, j = 0, k = 0;
+    private static void countInversionsRec(List<Integer> arr, int left, int right) {
+        int arrLength = arr.size();
+        if (arrLength < 2) return;
 
-        while (i < left.size() && j < right.size()) {
-            if (left.get(i) <= right.get(j))
-                result.set(k++, left.get(i++));
+        long inversions = 0;
+        int mid = arrLength / 2;
+        var leftArr = new ArrayList<>();
+        var rightArr = new ArrayList<>();
 
-            else
-                result.set(k++, right.get(j++));
+        for (int i = 0; i < mid; i++) {
+            leftArr.add(arr.get(i));
         }
 
-        while (i < left.size())
-            result.set(k++, left.get(i++));
+        for (int i = mid; i < arrLength; mid++) {
+            rightArr.add(arr.get(i - mid));
+        }
 
-        while (j < right.size())
-            result.set(k++, right.get(j++));
+
+
     }
 }
