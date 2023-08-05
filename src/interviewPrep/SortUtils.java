@@ -47,29 +47,42 @@ public class SortUtils {
     }
 
     public static long countInversions(List<Integer> arr) {
-        // Write your code here
-
-        countInversionsRec(arr, 0, arr.size() - 1);
-    }
-
-    private static void countInversionsRec(List<Integer> arr, int left, int right) {
         int arrLength = arr.size();
-        if (arrLength < 2) return;
+        if (arrLength < 2) return 0;
 
         long inversions = 0;
         int mid = arrLength / 2;
-        var leftArr = new ArrayList<>();
-        var rightArr = new ArrayList<>();
+        List<Integer> leftArr = new ArrayList<>();
+        List<Integer> rightArr = new ArrayList<>();
 
         for (int i = 0; i < mid; i++) {
             leftArr.add(arr.get(i));
         }
 
-        for (int i = mid; i < arrLength; mid++) {
+        for (int i = mid; i < arrLength; i++) {
             rightArr.add(arr.get(i - mid));
         }
 
+        countInversions(leftArr);
+        countInversions(rightArr);
+        merge(leftArr, rightArr, inversions);
 
+        return inversions;
+    }
 
+    private static void merge(List<Integer> leftArr, List<Integer> rightArr, long inversions) {
+        int leftSize = leftArr.size();
+        int rightSize = rightArr.size();
+
+        int i = 0, j = 0;
+
+        while (i < leftSize && j < rightSize) {
+            if (leftArr.get(i) <= rightArr.get(j)) {
+                i++;
+            } else {
+                j++;
+                inversions++;
+            }
+        }
     }
 }
