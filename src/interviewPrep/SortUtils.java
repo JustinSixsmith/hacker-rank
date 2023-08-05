@@ -47,42 +47,58 @@ public class SortUtils {
     }
 
     public static long countInversions(List<Integer> arr) {
-        int arrLength = arr.size();
-        if (arrLength < 2) return 0;
-
-        long inversions = 0;
-        int mid = arrLength / 2;
-        List<Integer> leftArr = new ArrayList<>();
-        List<Integer> rightArr = new ArrayList<>();
-
-        for (int i = 0; i < mid; i++) {
-            leftArr.add(arr.get(i));
-        }
-
-        for (int i = mid; i < arrLength; i++) {
-            rightArr.add(arr.get(i - mid));
-        }
-
-        countInversions(leftArr);
-        countInversions(rightArr);
-        merge(leftArr, rightArr, inversions);
-
-        return inversions;
+        return mergeSortAndCount(arr, 0, arr.size() - 1);
     }
 
-    private static void merge(List<Integer> leftArr, List<Integer> rightArr, long inversions) {
-        int leftSize = leftArr.size();
-        int rightSize = rightArr.size();
+    private static long mergeSortAndCount(List<Integer> arr, int l, int r) {
+        long count = 0;
 
-        int i = 0, j = 0;
+        if (l < r) {
+            int m = (l + r) / 2;
 
-        while (i < leftSize && j < rightSize) {
-            if (leftArr.get(i) <= rightArr.get(j)) {
-                i++;
+            // Count inversions in left and right subarrays
+            count += mergeSortAndCount(arr, l, m);
+            count += mergeSortAndCount(arr, m + 1, r);
+
+            // Count the inversions during merge
+            count += mergeAndCount(arr, l, m, r);
+        }
+
+        return count;
+    }
+
+    private static long mergeAndCount(List<Integer> arr, int l, int m, int r) {
+        List<Integer> left = new ArrayList<>(arr.subList(l, m + 1));
+        List<Integer> right = new ArrayList<>(arr.subList(m + 1, r + 1));
+
+        long count = 0;
+        int i = 0, j = 0, k = l;
+
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i) <= right.get(j)) {
+                arr.set(k++, left.get(i++));
             } else {
-                j++;
-                inversions++;
+                arr.set(k++, right.get(j++));
+                count += m + 1 - l - i;  // Number of remaining elements in left
             }
         }
+
+        while (i < left.size()) {
+            arr.set(k++, left.get(i++));
+        }
+
+        while (j < right.size()) {
+            arr.set(k++, right.get(j++));
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> arr1 = List.of(1, 1, 1, 2, 2);
+        List<Integer> arr2 = List.of(2, 1, 3, 1, 2);
+
+        System.out.println(countInversions(arr1));  // Outputs: 0
+        System.out.println(countInversions(arr2));  // Outputs: 4
     }
 }
