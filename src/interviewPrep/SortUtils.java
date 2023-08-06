@@ -93,12 +93,4 @@ public class SortUtils {
 
         return count;
     }
-
-    public static void main(String[] args) {
-        List<Integer> arr1 = List.of(1, 1, 1, 2, 2);
-        List<Integer> arr2 = List.of(2, 1, 3, 1, 2);
-
-        System.out.println(countInversions(arr1));  // Outputs: 0
-        System.out.println(countInversions(arr2));  // Outputs: 4
-    }
 }
