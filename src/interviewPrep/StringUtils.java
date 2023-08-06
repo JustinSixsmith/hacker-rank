@@ -104,4 +104,17 @@ public class StringUtils {
         return 0;
     }
 
+    public static int alternatingCharacters(String s) {
+        // Write your code here
+        var chars = s.toCharArray();
+        int count = 0;
+
+        for (int i = 0; i < chars.length - 1; i++) {
+            if (chars[i] == chars[i + 1])
+                count++;
+        }
+
+        return count;
+    }
+
 }
