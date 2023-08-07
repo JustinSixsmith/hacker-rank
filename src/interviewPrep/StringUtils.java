@@ -117,4 +117,47 @@ public class StringUtils {
         return count;
     }
 
+    public static String isValid(String s) {
+        Map<Character, Integer> charFrequency = new HashMap<>();
+        Map<Integer, Integer> freqFrequency = new HashMap<>();
+
+        // Step 1: Count the frequency of each character
+        for (char c : s.toCharArray()) {
+            charFrequency.put(c, charFrequency.getOrDefault(c, 0) + 1);
+        }
+
+        // Step 2: Count the frequency of those frequencies
+        for (int freq : charFrequency.values()) {
+            freqFrequency.put(freq, freqFrequency.getOrDefault(freq, 0) + 1);
+        }
+
+        if (freqFrequency.size() == 1) {
+            return "YES";
+        }
+
+        if (freqFrequency.size() == 2) {
+            Iterator<Integer> it = freqFrequency.keySet().iterator();
+            int freq1 = it.next();
+            int freq2 = it.next();
+
+            if (freqFrequency.get(freq1) == 1) {
+                // Either reduce the frequency by 1 (for case like 3,2 where freq of 3 is 1)
+                // Or remove a character (for case like 1,2 where freq of 1 is 1)
+                if (freq1 - 1 == freq2 || freq1 == 1) {
+                    return "YES";
+                }
+            }
+
+            if (freqFrequency.get(freq2) == 1) {
+                // Either reduce the frequency by 1 (for case like 2,3 where freq of 3 is 1)
+                // Or remove a character (for case like 2,1 where freq of 1 is 1)
+                if (freq2 - 1 == freq1 || freq2 == 1) {
+                    return "YES";
+                }
+            }
+        }
+
+        return "NO";
+    }
+
 }

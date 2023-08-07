@@ -8,12 +8,8 @@ import static interviewPrep.SortUtils.countInversions;
 
 public class Main {
     public static void main(String[] args) {
-        var str1 = "AAAA";
-        var str2 = "BBBBB";
-        var str3 = "ABABABAB";
-        var str4 = "BABABA";
-        var str5 = "AAABBB";
+        String str = "aabbd";
 
-        System.out.println(StringUtils.alternatingCharacters(str1));
+        System.out.println(StringUtils.isValid(str));
     }
 }
