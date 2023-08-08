@@ -160,4 +160,34 @@ public class StringUtils {
         return "NO";
     }
 
+
+    public static long substrCount(int n, String s) {
+        long count = 0; // to keep count of result
+
+        // Part 1: Count all special substrings with all same characters
+        int currentRepeat = 0;
+        for (int i = 0; i < n; i++) {
+            currentRepeat = 1; // reset for each character in string
+            while (i + 1 < n && s.charAt(i) == s.charAt(i + 1)) {
+                i++;
+                currentRepeat++;
+            }
+            // sum of first currentRepeat numbers
+            count += (currentRepeat * (currentRepeat + 1)) / 2;
+        }
+
+        // Part 2: Count all special substrings with the same characters except for the middle one.
+        for (int i = 1; i < n; i++) {
+            int mirrorLeft = i - 1;
+            int mirrorRight = i + 1;
+            while (mirrorLeft >= 0 && mirrorRight < n && s.charAt(i) != s.charAt(mirrorLeft) && s.charAt(mirrorLeft) == s.charAt(mirrorRight)) {
+                count++;
+                mirrorLeft--;
+                mirrorRight++;
+            }
+        }
+
+        return count;
+    }
+
 }
