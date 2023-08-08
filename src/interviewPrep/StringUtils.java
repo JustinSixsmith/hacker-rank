@@ -177,17 +177,21 @@ public class StringUtils {
         }
 
         // Part 2: Count all special substrings with the same characters except for the middle one.
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < n - 1; i++) {
             int mirrorLeft = i - 1;
             int mirrorRight = i + 1;
-            while (mirrorLeft >= 0 && mirrorRight < n && s.charAt(i) != s.charAt(mirrorLeft) && s.charAt(mirrorLeft) == s.charAt(mirrorRight)) {
-                count++;
-                mirrorLeft--;
-                mirrorRight++;
+            char leftChar = s.charAt(mirrorLeft);
+            if (s.charAt(i) != leftChar) {
+                while (mirrorLeft >= 0 && mirrorRight < n && s.charAt(mirrorLeft) == leftChar && s.charAt(mirrorRight) == leftChar) {
+                    count++;
+                    mirrorLeft--;
+                    mirrorRight++;
+                }
             }
         }
 
         return count;
     }
+
 
 }
