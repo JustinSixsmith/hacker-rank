@@ -9,8 +9,8 @@ import static interviewPrep.SortUtils.countInversions;
 public class Main {
     public static void main(String[] args) {
 
-        String str = "abcbaba";
+        List<Integer> arr = new ArrayList<>(Arrays.asList(1, -3, 71, 68, 17));
 
-        StringUtils.substrCount(7, str);
+        System.out.println(GreedyAlgorithms.minimumAbsoluteDifference(arr));
     }
 }
