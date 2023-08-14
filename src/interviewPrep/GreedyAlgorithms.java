@@ -1,8 +1,6 @@
 package interviewPrep;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class GreedyAlgorithms {
 
@@ -47,4 +45,20 @@ public class GreedyAlgorithms {
 
         return luckBalance;
     }
+
+    public static int getMinimumCost(int k, int[] c) {
+        Arrays.sort(c);
+        int totalCost = 0;
+        int multiplier = 0;
+
+        for (int i = c.length - 1; i >= 0; i--) {
+            totalCost += (multiplier + 1) * c[i];
+            if ((c.length - i) % k == 0) {
+                multiplier++;
+            }
+        }
+
+        return totalCost;
+    }
+
 }
