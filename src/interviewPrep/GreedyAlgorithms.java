@@ -67,8 +67,8 @@ public class GreedyAlgorithms {
         int minUnfairness = Integer.MAX_VALUE;
 
 
-        for (int i = 0; i < arr.size() - k; i++) {
-            int unfairness = arr.get(i + k) - arr.get(i);
+        for (int i = 0; i <= arr.size() - k; i++) {
+            int unfairness = arr.get(i + k - 1) - arr.get(i);
             if (unfairness < minUnfairness)
                 minUnfairness = unfairness;
         }
