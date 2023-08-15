@@ -61,4 +61,19 @@ public class GreedyAlgorithms {
         return totalCost;
     }
 
+    public static int maxMin(int k, List<Integer> arr) {
+        // Write your code here
+        Collections.sort(arr);
+        int minUnfairness = Integer.MAX_VALUE;
+
+
+        for (int i = 0; i < arr.size() - k; i++) {
+            int unfairness = arr.get(i + k) - arr.get(i);
+            if (unfairness < minUnfairness)
+                minUnfairness = unfairness;
+        }
+
+        return minUnfairness;
+    }
+
 }
