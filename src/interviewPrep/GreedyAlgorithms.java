@@ -76,4 +76,35 @@ public class GreedyAlgorithms {
         return minUnfairness;
     }
 
+    public static String reverseShuffleMerge(String input) {
+        int[] freq = new int[26];
+        for(char c : input.toCharArray()) {
+            freq[c - 'a']++;
+        }
+        int[] sFreq = freq.clone();
+        for(int i = 0; i < 26; i++) {
+            sFreq[i] /= 2;
+        }
+
+        Stack<Character> stack = new Stack<>();
+        for(int i = input.length() - 1; i >= 0; i--) {
+            char c = input.charAt(i);
+            if(sFreq[c - 'a'] > 0) {
+                while(!stack.isEmpty() && stack.peek() > c && freq[stack.peek() - 'a'] > sFreq[stack.peek() - 'a']) {
+                    sFreq[stack.pop() - 'a']++;
+                }
+                stack.push(c);
+                sFreq[c - 'a']--;
+            }
+            freq[c - 'a']--;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while(!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        return sb.toString();
+    }
+
+
 }
