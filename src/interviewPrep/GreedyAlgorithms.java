@@ -78,33 +78,44 @@ public class GreedyAlgorithms {
 
     public static String reverseShuffleMerge(String input) {
         int[] freq = new int[26];
-        for(char c : input.toCharArray()) {
-            freq[c - 'a']++;
+        for (char ch : input.toCharArray()) {
+            freq[ch - 'a']++;
         }
         int[] sFreq = freq.clone();
-        for(int i = 0; i < 26; i++) {
+        for (int i = 0; i < 26; i++) {
             sFreq[i] /= 2;
         }
 
         Stack<Character> stack = new Stack<>();
-        for(int i = input.length() - 1; i >= 0; i--) {
-            char c = input.charAt(i);
-            if(sFreq[c - 'a'] > 0) {
-                while(!stack.isEmpty() && stack.peek() > c && freq[stack.peek() - 'a'] > sFreq[stack.peek() - 'a']) {
-                    sFreq[stack.pop() - 'a']++;
-                }
-                stack.push(c);
-                sFreq[c - 'a']--;
+        for (int i = input.length() - 1; i >= 0; i--) {
+            char ch = input.charAt(i);
+            int chNum = ch - 'a';
+
+            // If we don't need this character, skip
+            if (sFreq[chNum] <= 0) {
+                freq[chNum]--;
+                continue;
             }
-            freq[c - 'a']--;
+
+            // While the current character is smaller than the top of the stack
+            // and we will encounter the stack's top character later, pop off the top
+            while (!stack.isEmpty() && ch < stack.peek() && freq[stack.peek() - 'a'] > sFreq[stack.peek() - 'a']) {
+                sFreq[stack.pop() - 'a']++;
+            }
+
+            // Add current character to stack
+            stack.push(ch);
+            sFreq[chNum]--;
+            freq[chNum]--;
         }
 
         StringBuilder sb = new StringBuilder();
-        while(!stack.isEmpty()) {
-            sb.append(stack.pop());
+        for (char c : stack) {
+            sb.append(c);
         }
         return sb.toString();
     }
+
 
 
 }
