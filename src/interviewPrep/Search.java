@@ -19,11 +19,11 @@ public class Search {
                 if (difference >= 0 && difference < money && difference < closest) {
                     closest = difference;
                     if (first < second) {
-                        sunny = first;
-                        johnny = second;
+                        sunny = i + 1;
+                        johnny = j + 1;
                     } else {
-                        johnny = first;
-                        sunny = second;
+                        johnny = j + 1;
+                        sunny = i + 1;
                     }
                 }
             }
