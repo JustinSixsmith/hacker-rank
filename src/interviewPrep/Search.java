@@ -1,5 +1,6 @@
 package interviewPrep;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,5 +26,20 @@ public class Search {
         }
     }
 
+    public static int pairs(int k, List<Integer> arr) {
+        // Write your code here
+        Collections.sort(arr);
+        int count = 0;
 
+        for (int i = 0; i < arr.size() - 1; i++) {
+            for (int j = 0; j <; j++) {
+                int difference = arr.get(j) - arr.get(i);
+
+                if (difference == k)
+                    count++;
+            }
+        }
+
+        return count;
+    }
 }
