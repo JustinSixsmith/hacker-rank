@@ -32,7 +32,7 @@ public class Search {
         int count = 0;
 
         for (int i = 0; i < arr.size() - 1; i++) {
-            for (int j = 0; j <; j++) {
+            for (int j = 1; j < arr.size(); j++) {
                 int difference = arr.get(j) - arr.get(i);
 
                 if (difference == k)
