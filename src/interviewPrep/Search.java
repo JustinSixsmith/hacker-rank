@@ -1,9 +1,6 @@
 package interviewPrep;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Search {
 
@@ -27,19 +24,16 @@ public class Search {
     }
 
     public static int pairs(int k, List<Integer> arr) {
-        // Write your code here
-        Collections.sort(arr);
+        Set<Integer> set = new HashSet<>(arr);
         int count = 0;
 
-        for (int i = 0; i < arr.size() - 1; i++) {
-            for (int j = 1; j < arr.size(); j++) {
-                int difference = arr.get(j) - arr.get(i);
-
-                if (difference == k)
-                    count++;
+        for (int num : arr) {
+            if (set.contains(num + k)) {
+                count++;
             }
         }
 
         return count;
     }
+
 }
