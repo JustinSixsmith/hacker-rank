@@ -36,4 +36,25 @@ public class Search {
         return count;
     }
 
+    public static long triplets(int[] a, int[] b, int[] c) {
+        a = Arrays.stream(a).distinct().sorted().toArray();
+        b = Arrays.stream(b).distinct().sorted().toArray();
+        c = Arrays.stream(c).distinct().sorted().toArray();
+
+        long result = 0;
+        long aIndex = 0, cIndex = 0;
+
+        for (int value : b) {
+            while (aIndex < a.length && a[(int) aIndex] <= value) {
+                aIndex++;
+            }
+            while (cIndex < c.length && c[(int) cIndex] <= value) {
+                cIndex++;
+            }
+            result += aIndex * cIndex;
+        }
+
+        return result;
+    }
+
 }
