@@ -57,4 +57,18 @@ public class Search {
         return result;
     }
 
+    public static long minTime(long[] machines, long goal) {
+        long day = 1;
+        long count = 0;
+
+        while (count < goal) {
+            for (long machine : machines) {
+                count += day / machine;
+            }
+            day++;
+        }
+
+        return day;
+    }
+
 }
