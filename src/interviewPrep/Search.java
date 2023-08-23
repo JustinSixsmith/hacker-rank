@@ -58,17 +58,34 @@ public class Search {
     }
 
     public static long minTime(long[] machines, long goal) {
-        long day = 1;
-        long count = 0;
+        // Sort machines to find minimum and maximum time machines
+        Arrays.sort(machines);
 
-        while (count < goal) {
-            for (long machine : machines) {
-                count += day / machine;
+        // Establish bounds for binary search
+        long low = machines[0]; // minimum time possible
+        long high = machines[machines.length - 1] * goal; // maximum time possible
+
+        // Apply binary search on the time
+        while (low < high) {
+            long mid = (low + high) / 2;
+            long itemsProduced = getItemsProduced(machines, mid);
+
+            if (itemsProduced < goal) {
+                low = mid + 1;
+            } else {
+                high = mid;
             }
-            day++;
         }
-
-        return day;
+        return low;
     }
+
+    private static long getItemsProduced(long[] machines, long days) {
+        long total = 0;
+        for (long machine : machines) {
+            total += days / machine;
+        }
+        return total;
+    }
+
 
 }
