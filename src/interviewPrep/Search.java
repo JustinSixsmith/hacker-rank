@@ -87,25 +87,28 @@ public class Search {
         return total;
     }
 
-    public static long maximumSum(List<Long> a, long m) {
-        // Write your code here
-        long maxMod = 0;
+    import java.util.*;
 
-        for (int i = 0; i < a.size() - 1; i++) {
-            long sum = a.get(i);
-            long mod = sum % m;
-            if (mod > maxMod)
-                maxMod = mod;
-            for (int j = 1; j < a.size(); j++) {
-                sum += a.get(j);
-                mod = sum % m;
-                if (mod > maxMod)
-                    maxMod = mod;
+    public static long maximumSum(List<Long> a, long m) {
+        TreeSet<Long> prefix = new TreeSet<>();
+        long currentSum = 0;
+        long result = 0;
+
+        for (int i = 0; i < a.size(); i++) {
+            currentSum = (currentSum + a.get(i)) % m;
+            result = Math.max(result, currentSum); // consider the prefix sum itself
+
+            Long higher = prefix.ceiling(currentSum + 1);
+            if (higher != null) {
+                result = Math.max(result, (currentSum - higher + m) % m);
             }
+
+            prefix.add(currentSum);
         }
 
-        return maxMod;
+        return result;
     }
+
 
 
 }
