@@ -87,8 +87,6 @@ public class Search {
         return total;
     }
 
-    import java.util.*;
-
     public static long maximumSum(List<Long> a, long m) {
         TreeSet<Long> prefix = new TreeSet<>();
         long currentSum = 0;
@@ -113,48 +111,51 @@ public class Search {
         long candies = 0;
         long passes = 0;
         long minPasses = Long.MAX_VALUE;
-        long spent = 0;
 
-        while (spent + candies < n) {
-            // Increment the passes counter and make candies
-            passes++;
-            candies += m * w;
+        // To keep track of candies made till now
+        long candiesTillNow = 0;
 
-            // Update the minimum passes if we can reach the target now
-            long curPasses = passes + (n - (spent + candies)) / (m * w);
-            if (candies + spent >= n) {
-                curPasses = Math.min(curPasses, passes);
-            }
-            minPasses = Math.min(minPasses, curPasses);
+        while (candiesTillNow < n) {
+            // Number of passes needed if we don't buy any more workers/machines
+            long passesNeeded = (long) Math.ceil((double) (n - candiesTillNow) / (m * w));
+            minPasses = Math.min(minPasses, passes + passesNeeded);
 
-            if (candies + spent >= n) {
+            // If we've reached or surpassed the candy target, break out of loop
+            if (candiesTillNow >= n) {
                 break;
             }
 
-            // Decide whether to buy a new machine or a new worker or both
-            long numNewWorkersOrMachines = candies / p;
-            if (numNewWorkersOrMachines == 0) {
-                // Skip to the next iteration if we can't afford a new machine or worker
-                continue;
-            }
+            // Make candies
+            passes++;
+            candiesTillNow += m * w;
+            candies += m * w;
 
-            // Subtract the spent candies
-            candies -= p * numNewWorkersOrMachines;
+            // Buy as many machines and/or workers as possible
+            long numToBuy = candies / p;
+            if (numToBuy > 0) {
+                long maxCandies = 0;
+                for (long i = 0; i <= numToBuy; i++) {
+                    long mm = m + (numToBuy - i);
+                    long ww = w + i;
+                    long totalCandies = candiesTillNow + (mm * ww);
+                    maxCandies = Math.max(maxCandies, totalCandies);
+                }
 
-            // Make the decision to optimize the future production of candies
-            long total = m + w;
-            long newTotal = total + numNewWorkersOrMachines;
-            long half = newTotal / 2;
-            if (m > w) {
-                w = Math.max(m, half);
-                m = newTotal - w;
-            } else {
-                m = Math.max(w, half);
-                w = newTotal - m;
+                // Deduct cost for the newly bought machines/workers
+                candies -= numToBuy * p;
+
+                // Distribute the bought machines and workers to maximize production
+                for (long i = 0; i < numToBuy; i++) {
+                    if (m <= w) {
+                        m++;
+                    } else {
+                        w++;
+                    }
+                }
             }
         }
+
         return minPasses;
     }
-
 
 }
