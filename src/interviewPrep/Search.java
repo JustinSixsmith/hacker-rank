@@ -109,6 +109,52 @@ public class Search {
         return result;
     }
 
+    public static long minimumPasses(long m, long w, long p, long n) {
+        long candies = 0;
+        long passes = 0;
+        long minPasses = Long.MAX_VALUE;
+        long spent = 0;
+
+        while (spent + candies < n) {
+            // Increment the passes counter and make candies
+            passes++;
+            candies += m * w;
+
+            // Update the minimum passes if we can reach the target now
+            long curPasses = passes + (n - (spent + candies)) / (m * w);
+            if (candies + spent >= n) {
+                curPasses = Math.min(curPasses, passes);
+            }
+            minPasses = Math.min(minPasses, curPasses);
+
+            if (candies + spent >= n) {
+                break;
+            }
+
+            // Decide whether to buy a new machine or a new worker or both
+            long numNewWorkersOrMachines = candies / p;
+            if (numNewWorkersOrMachines == 0) {
+                // Skip to the next iteration if we can't afford a new machine or worker
+                continue;
+            }
+
+            // Subtract the spent candies
+            candies -= p * numNewWorkersOrMachines;
+
+            // Make the decision to optimize the future production of candies
+            long total = m + w;
+            long newTotal = total + numNewWorkersOrMachines;
+            long half = newTotal / 2;
+            if (m > w) {
+                w = Math.max(m, half);
+                m = newTotal - w;
+            } else {
+                m = Math.max(w, half);
+                w = newTotal - m;
+            }
+        }
+        return minPasses;
+    }
 
 
 }
