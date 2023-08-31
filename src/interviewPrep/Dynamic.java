@@ -1,5 +1,9 @@
 package interviewPrep;
 
+import javaPrep.HashSet;
+
+import java.util.Objects;
+
 public class Dynamic {
 
     public static int maxSubsetSum(int[] arr) {
@@ -30,4 +34,31 @@ public class Dynamic {
 
         return Math.max(include, exclude);
     }
+
+    public static String abbreviation(String a, String b) {
+        // Write your code here
+        String upperA = a.toUpperCase();
+        StringBuilder leftovers = new StringBuilder();
+
+        int i = 0, j = 0;
+        while (i < a.length()) {
+            if (upperA.charAt(i) == b.charAt(j)) {
+                i++;
+                j++;
+                continue;
+            }
+            leftovers.append(a.charAt(i));
+            i++;
+        }
+
+
+        String lowerLeftovers = leftovers.toString().toLowerCase();
+        for (int k = 0; k < lowerLeftovers.length(); k++) {
+            if (leftovers.charAt(k) != lowerLeftovers.charAt(k)) return "NO";
+        }
+
+        return "YES";
+    }
+
+
 }
